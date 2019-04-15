@@ -5,7 +5,7 @@ draft: false
 author: Avery Wagar
 ---
 
-{{< image src="/d.png" alt="Avery Wagar" position="left" style="height:250px; width: 250px; -webkit-border-radius: 50%; -moz-border-radius: 50%; -ms-border-radius: 50%; -o-border-radius: 50%; border-radius: 50%; ">}}
+{{< image src="/d.png" alt="Avery Wagar" position="left" style="height: 250px;">}}
 
 __VR developer since 2016. Experience in Unity, C#, Java, JavaScript, Python, and Rust.__
 
