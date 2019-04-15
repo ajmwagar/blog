@@ -4,6 +4,11 @@ author: Avery Wagar
 date: 2017-10-23T13:35:00+01:00
 draft: false
 toc: false
+tags:
+  - Ge2
+  - esports
+  - drones
+  - virtual-reality
 ---
 
 This weekend Seattle was home the second annual edition of GE2. 

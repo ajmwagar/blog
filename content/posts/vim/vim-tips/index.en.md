@@ -4,6 +4,9 @@ author: Avery Wagar
 date: 2018-02-02T13:35:00+01:00
 draft: false
 toc: false
+tags:
+  - vim
+  - devtools
 ---
 
 Welcome back my fellow Vim enthusiasts! Today we will be discussing a few shortcuts you can add to your __.vimrc__!

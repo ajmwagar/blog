@@ -19,16 +19,30 @@ disableSitemap = false
 disable404     = false
 disableHugoGeneratorInject = true
 
+[blackfriday]
+  hrefTargetBlank = true
+
+[permalinks]
+  posts = "/posts/:year/:month/:title/"
+
 [params]
   dateform        = "Jan 2, 2006"
   dateformShort   = "Jan 2"
   dateformNum     = "2006-01-02"
   dateformNumTime = "2006-01-02 15:04 -0700"
 
+
+  disqusShortname = "averywagar"
+
+
+
+
   # Metadata mostly used in document's head
   description = "Homepage and blog by Avery Wagar"
   keywords = "homepage, blog, science, informatics, development, programming"
   images = [""]
+
+  homeSubtitle = "Software Developer"
 
   # Directory name of your blog content (default is `content/posts`)
   contentTypeName = "posts"
@@ -60,7 +74,7 @@ disableHugoGeneratorInject = true
     title = "Avery Wagar"
     subtitle = "Software Developer"
     keywords = ""
-    copyright = "Avery Wagar 2019"
+    copyright = "Avery Wagar"
     readOtherPosts = "Read other posts"
 
     [languages.en.params.logo]
@@ -81,6 +95,9 @@ disableHugoGeneratorInject = true
     #     identifier = "showcase"
     #     name = "Showcase"
     #     url = "/showcase"
+[taxonomies]
+  tag      = "tags"
+  category = ""
 
 # And you can even create generic menu
 [menu]
