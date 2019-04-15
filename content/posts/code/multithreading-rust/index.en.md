@@ -19,7 +19,7 @@ There are multiple ways that Rust can help us prevent data-race and enforce thre
 
 ### Arc & Mutex
 
-One way that Rust provides helps prevents against data-races is to use `Arcs` and `Mutexes` when sharing data across threads. For example, here we have an integer that we want multiple threads to mutate. We can protect the data and other threads by using a Mutex which ensures our data is not poisoned, more about that [here](https://doc.rust-lang.org/std/sync/struct.Mutex.html#poisoning). 
+One way that Rust provides protection from data-races is to use `Arcs` and `Mutexes` when sharing data across threads. For example, here we have an integer that we want multiple threads to mutate. We can protect the data and other threads by using a Mutex which ensures our data is not poisoned, more about that [here](https://doc.rust-lang.org/std/sync/struct.Mutex.html#poisoning). 
 
 ```rust
 // Import the required types
