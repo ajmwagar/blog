@@ -1,6 +1,6 @@
 baseurl = "/"
 languageCode = "en-us"
-theme = "hello-friend-ng"
+theme = "hello-friend-ng-ng"
 
 googleAnalytics = "UA-102498484-1"
 disqusShortname = "averywagar"
