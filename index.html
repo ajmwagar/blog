@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author"
+    content="Avery Wagar">
+<meta name="description"
+    content="Multi-threading, Concurrency, and Parallelism are hard and can be scary. With problems like data-races and worrying about thread safety, it can be easy to stay away from them altogether. Luckily for us, Rust has our backs when it comes to thread safety and all the other perils that come our way when building Multi-threaded code. In-fact Rust&amp;rsquo;s compiler will not let compile code that has a potential data-race in it." />
+<meta name="keywords" content="" />
+<meta name="robots" content="noodp" />
+<link rel="canonical" href="//localhost:1313/posts/2019/04/fearless-multi-threading-parallelism-with-rust/" />
+
+
+<title>
+    
+    Fearless Multi-threading &amp; Parallelism with Rust :: Avery Wagar  — Software Developer
+    
+</title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.1/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+<link rel="stylesheet" href="//localhost:1313/scss/main.min.099699ab246bf26f50616f7c9f00c79d46110459d1bd727b2d07d6fc09ece082.css">
+
+
+
+<link rel="apple-touch-icon" sizes="180x180" href="//localhost:1313/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="//localhost:1313/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="//localhost:1313/favicon-16x16.png">
+<link rel="manifest" href="//localhost:1313/site.webmanifest">
+<link rel="mask-icon" href="//localhost:1313/safari-pinned-tab.svg" color="#252627">
+<link rel="shortcut icon" href="//localhost:1313/favicon.ico">
+<meta name="theme-color" content="#252627">
+<meta itemprop="name" content="Fearless Multi-threading &amp; Parallelism with Rust">
+<meta itemprop="description" content="Multi-threading, Concurrency, and Parallelism are hard and can be scary. With problems like data-races and worrying about thread safety, it can be easy to stay away from them altogether. Luckily for us, Rust has our backs when it comes to thread safety and all the other perils that come our way when building Multi-threaded code. In-fact Rust&rsquo;s compiler will not let compile code that has a potential data-race in it.">
+
+
+<meta itemprop="datePublished" content="2019-04-15T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2019-04-14T20:32:51-07:00" />
+<meta itemprop="wordCount" content="866">
+
+
+
+<meta itemprop="keywords" content="Rust,Programming,Multi-threading,Concurrency," />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="//localhost:1313/"/>
+
+<meta name="twitter:title" content="Fearless Multi-threading &amp; Parallelism with Rust"/>
+<meta name="twitter:description" content="Multi-threading, Concurrency, and Parallelism are hard and can be scary. With problems like data-races and worrying about thread safety, it can be easy to stay away from them altogether. Luckily for us, Rust has our backs when it comes to thread safety and all the other perils that come our way when building Multi-threaded code. In-fact Rust&rsquo;s compiler will not let compile code that has a potential data-race in it."/>
+
+
+
+
+<meta property="article:published_time" content="2019-04-15 00:00:00 &#43;0000 UTC" />
+
+
+
+
+
+
+
+
+    </head>
+
+    <body class="dark-theme">
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="//localhost:1313/" style="text-decoration: none;">
+    <div class="logo">
+        
+            <span class="logo__mark">></span>
+            <span class="logo__text">cd /home/ajmwagar</span>
+            <span class="logo__cursor"></span>
+        
+    </div>
+</a>
+
+
+        <span class="header__right">
+            
+                <nav class="menu">
+    <ul class="menu__inner"><li><a href="//localhost:1313/about">About</a></li><li><a href="//localhost:1313/posts">Blog</a></li><li><a href="//localhost:1313/work">Work</a></li>
+    </ul>
+</nav>
+
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+            
+
+            <span class="theme-toggle"><svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+  3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+  13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
+</svg>
+</span>
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+    <main class="post">
+
+        <div class="post-info">
+            <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>5 minutes
+
+            
+
+            </p>
+        </div>
+
+        <article>
+            <h1 class="post-title"><a href="//localhost:1313/posts/2019/04/fearless-multi-threading-parallelism-with-rust/">Fearless Multi-threading &amp; Parallelism with Rust</a></h1>
+
+            
+
+            <div class="post-content">
+                
+
+<p>Multi-threading, Concurrency, and Parallelism are hard and can be scary. With problems like data-races and worrying about thread safety, it can be easy to stay away from them altogether. Luckily for us, Rust has our backs when it comes to thread safety and all the other perils that come our way when building Multi-threaded code. In-fact Rust&rsquo;s compiler will not let <strong>compile</strong> code that has a potential data-race in it. Therefore we are free to write out code without fear.</p>
+
+<h2 id="multi-threading">Multi-threading</h2>
+
+<p>There are multiple ways that Rust helps us prevent data-race and enforce thread safety.</p>
+
+<h3 id="arc-mutex">Arc &amp; Mutex</h3>
+
+<p>One way that Rust provides is to use <code>Arc</code> and <code>Mutex</code> when sharing data across threads. For example, here we have an integer that we want multiple threads to mutate. We can protect the data and other threads by using a Mutex which ensures our data is not poisoned, more about that <a href="https://doc.rust-lang.org/std/sync/struct.Mutex.html#poisoning" target="_blank">here</a>.</p>
+
+<pre><code class="language-rust">// Import the required types
+use std::sync::{Arc, Mutex};
+use std::thread;
+
+const N: usize = 10;
+
+fn main() {
+  // Here we're using an Arc to share memory among threads, 
+  // and the data inside the Arc is protected with a mutex.
+  let safe_data = Arc::new(Mutex::new(0));
+
+  println!(&quot;Data: {:?}&quot;, safe_data); // Mutex: { data: 0 }
+
+  // Create an array of thread handles 
+  let handles = (0..N)
+    .into_iter()
+    .map(|_| {
+      let data = Arc::clone(&amp;safe_data);
+      thread::spawn(move || {
+        // Unlock the mutex so the thread may mutate the data
+        // We unwrap() the return value to assert that we are not       
+        // expecting threads to ever fail while holding the lock.
+        let mut data = data.lock().unwrap();
+
+        // Mutate the data
+        *data += 1;
+
+        // the lock is unlocked here when `data` goes out of scope.
+      })
+    })
+    .collect::&lt;Vec&lt;thread::JoinHandle&lt;_&gt;&gt;&gt;();  
+
+  // Wait for threads to finish mutating safe_data
+  for thread in handles {
+    thread.join().unwrap();
+  }
+
+  // Print out mutated data
+  println!(&quot;Data: {:?}&quot;, safe_data); // Mutex: { data: 10 } or N
+}
+</code></pre>
+
+<p>In the example above we safely mutate an integer across threads, this can be applied with larger data types, however, for event-based interaction across threads I recommend using an <code>MPSC</code> (Multi-Producer, Single Consumer) channel.</p>
+
+<h3 id="mpsc-channels">MPSC Channels</h3>
+
+<p><code>std::sync::mpsc</code> channels are a quick and safe way to share <em>events</em> across threads.</p>
+
+<p>For example, we can use the <code>mpsc</code> channels in a small banking program:</p>
+
+<pre><code class="language-rust">use std::sync::mpsc::channel;
+use std::thread;
+
+/// Transaction enum
+enum Transaction {
+    Widthdrawl(f64),
+    Deposit(f64)
+}
+
+fn main() {
+    // set the number of customers
+    let n_customers = 10;
+
+    // Create a &quot;customer&quot; and a &quot;banker&quot;
+    let (customers, banker) = channel();
+
+    let handles = (0..n_customers).into_iter().map(|i| {
+
+        // Create another &quot;customer&quot;
+        let customer = customers.clone();
+
+        // Create the customer thread
+        let handle = thread::spawn(move || {
+            // Define Transaction
+            let trans_type = match i % 2 {
+                0 =&gt; Transaction::Deposit(i as f64 * 10.0),
+                _ =&gt; Transaction::Widthdrawl(i as f64 * 5.0)
+            };
+
+            // Send the Transaction
+            customer.send(trans_type).unwrap();
+        });
+
+        handle
+
+    }).collect::&lt;Vec&lt;thread::JoinHandle&lt;_&gt;&gt;&gt;();
+
+    // Wait for threads to finish
+    for handle in handles {
+        handle.join().unwrap()
+    }
+
+    // Create a bank thread
+    let bank = thread::spawn(move || {
+        // Create a value
+        let mut bank: f64 = 10000.0;
+
+        // Perform the transactions in order
+        banker.into_iter().for_each(|i| {
+            match i {
+                // Subtract for Widthdrawls 
+                Transaction::Widthdrawl(amount) =&gt; {
+                    bank = bank - amount;
+                },
+                // Add for deposits
+                Transaction::Deposit(amount) =&gt; {
+                    bank = bank + amount;
+                },
+            }
+
+            println!(&quot;Bank value: {}&quot;, bank);
+        });
+    });
+
+    // Let the bank finish
+    bank.join().unwrap();
+}
+</code></pre>
+
+<p>The output of the above program would look something like this:</p>
+
+<pre><code>Bank value: 10000
+Bank value: 9995
+Bank value: 10015
+Bank value: 10000
+Bank value: 9975
+Bank value: 10035
+Bank value: 10075
+Bank value: 10040
+Bank value: 10120
+Bank value: 10075
+</code></pre>
+
+<p>As you can see <code>mpsc</code> channels are a powerful tool. Whether is sending events from a game loop to different threads, or high-frequency transactions, channels are a powerful tool when it comes to dealing with events and threads.</p>
+
+<h2 id="parallelism-with-rayon">Parallelism with Rayon</h2>
+
+<p>Now on to <strong>Parallelism</strong>. <a href="https://github.com/rayon-rs/rayon" target="_blank">Rayon</a> is a Rust Library or &ldquo;crate&rdquo; that makes this dead simple.</p>
+
+<p>Just add this to your <code>Cargo.toml</code>:</p>
+
+<pre><code class="language-toml">[dependencies]
+rayon = &quot;1.0&quot;
+</code></pre>
+
+<p>And add this to your <code>src/main.rs</code>:</p>
+
+<pre><code class="language-rust">use rayon::prelude::*;
+</code></pre>
+
+<p>Rayon comes with a strong parallel iterator API. That means that most of the time all you need to do to achieve <strong>Parallelism</strong> is replacing your <code>.iter()</code> calls with <code>.par_iter()</code> and your <code>.into_iter()</code> calls with <code>.into_par_iter()</code>.</p>
+
+<p>For example here is a Factorial function that is <strong>not</strong> executing in parallel:</p>
+
+<pre><code class="language-rust">/// Compute the Factorial using a plain iterator.
+fn factorial(n: u32) -&gt; BigUint {
+  (1..n + 1)
+    .into_iter()
+    .map(BigUint::from)
+    .fold(BigUint::one(), Mul::mul)
+}
+</code></pre>
+
+<p>And this is a Factorial function that <strong>is</strong> executing in parallel:</p>
+
+<pre><code class="language-rust">/// Compute the Factorial using a parallel iterator.
+fn factorial(n: u32) -&gt; BigUint {
+  (1..n + 1)
+    .into_par_iter() // This line is different
+    .map(BigUint::from)
+    .reduce_with(Mul::mul).unwrap() // And this line is different
+}
+</code></pre>
+
+<p>We only need to change <strong>2 lines</strong> to change our function from sequential to parallel. There are plenty more examples of using Rayon in the <code>/rayon-demo</code> folder in their <a href="https://github.com/rayon-rs/rayon/tree/master/rayon-demo" target="_blank">git repository</a>.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Rust, if applied in the right way, makes Multi-threading and Parallelism a breeze. Whether you use <code>Arcs</code> and <code>Mutexes</code> or <code>MPSC</code> channels, hopefully, you can proceed without fear when you have the urge to add Parallelism or Multi-threading into your next Rust project.</p>
+
+            </div>
+        </article>
+
+        <hr />
+
+        <div class="post-info">
+                <p>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg><span class="tag"><a href="//localhost:1313/tags/rust">Rust</a></span><span class="tag"><a href="//localhost:1313/tags/programming">Programming</a></span><span class="tag"><a href="//localhost:1313/tags/multi-threading">Multi-threading</a></span><span class="tag"><a href="//localhost:1313/tags/concurrency">Concurrency</a></span>
+                </p>
+
+            <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>866 Words</p>
+
+            <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>2019-04-14 17:00 -0700</p>
+                <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-git-commit"><circle cx="12" cy="12" r="4"></circle><line x1="1.05" y1="12" x2="7" y2="12"></line><line x1="17.01" y1="12" x2="22.96" y2="12"></line></svg><a href="https://github.com/ajmwagar/blog/commit/0799df3bde3d2ad4d5f2f6988ff1a5a952977c4c" target="_blank" rel="noopener">0799df3</a> @ 2019-04-14</p>
+        </div>
+
+        
+            <div class="pagination">
+                <div class="pagination__title">
+                    <span class="pagination__title-h">Read other posts</span>
+                    <hr />
+                </div>
+
+                <div class="pagination__buttons">
+                    
+
+                    
+                        <span class="button next">
+                            <a href="//localhost:1313/posts/2018/02/vim-tips-and-tricks-no.-1/">
+                                <span class="button__text">Vim Tips and Tricks No. 1</span>
+                                <span class="button__icon">→</span>
+                            </a>
+                        </span>
+                    
+                </div>
+            </div>
+        
+
+        
+    </main>
+
+            </div>
+
+            
+                <footer class="footer">
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>&copy; 2019</span>
+            
+            <span>Avery Wagar</span>
+            <span> <a href="//localhost:1313/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a></span>
+        </div>
+    </div>
+    <div class="footer__inner">
+        <div class="footer__content">
+
+        </div>
+    </div>
+    <div class="footer__inner">
+        <div class="footer__content">
+            
+            
+        </div>
+    </div>
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+
+
+<script type="text/javascript" src="//localhost:1313/js/bundle.min.cf7871ed49474a80ed457154d24e61f7881adbe0f9384951a74ac46b688a39a4dbfa68bc6d37baeb058186de354ead3487d4ee7f083ea4cba860c48600b694f3.js" integrity="sha512-z3hx7UlHSoDtRXFU0k5h94ga2&#43;D5OElRp0rEa2iKOaTb&#43;mi8bTe66wWBht41Tq00h9Tufwg&#43;pMuoYMSGALaU8w=="></script>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-102498484-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+
+
+    <script data-no-instant>document.write('<script src="/livereload.js?port=1313&mindelay=10"></' + 'script>')</script></body>
+</html>

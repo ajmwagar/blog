@@ -1,9 +1,10 @@
-baseurl = "/"
+baseurl = "https://averywagar.com"
 languageCode = "en-us"
 theme = "hello-friend-ng"
 
 googleAnalytics = "UA-102498484-1"
 disqusShortname = "averywagar"
+# DisqusShortname = "averywagar"
 
 buildDrafts  = false
 buildFuture  = false
@@ -18,6 +19,7 @@ disableRSS     = false
 disableSitemap = false
 disable404     = false
 disableHugoGeneratorInject = true
+comments = true
 
 [blackfriday]
   hrefTargetBlank = true
@@ -31,16 +33,11 @@ disableHugoGeneratorInject = true
   dateformNum     = "2006-01-02"
   dateformNumTime = "2006-01-02 15:04 -0700"
 
-
-  disqusShortname = "averywagar"
-
-
-
-
   # Metadata mostly used in document's head
   description = "Homepage and blog by Avery Wagar"
   keywords = "homepage, blog, science, informatics, development, programming"
   images = [""]
+  comments = true
 
   homeSubtitle = "Software Developer"
 
