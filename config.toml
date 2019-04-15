@@ -1,0 +1,94 @@
+baseurl = "/"
+languageCode = "en-us"
+theme = "hello-friend-ng"
+
+# googleAnalytics = ""
+# disqusShortname = ""
+
+buildDrafts  = false
+buildFuture  = false
+buildExpored = false
+canonifyURLs = true
+
+enableRobotsTXT = true
+enableGitInfo   = true
+enableEmoji     = true
+enableMissingTranslationPlaceholders = false
+disableRSS     = false
+disableSitemap = false
+disable404     = false
+disableHugoGeneratorInject = false
+
+[params]
+  dateform        = "Jan 2, 2006"
+  dateformShort   = "Jan 2"
+  dateformNum     = "2006-01-02"
+  dateformNumTime = "2006-01-02 15:04 -0700"
+
+  # Metadata mostly used in document's head
+  description = "Homepage and blog by Avery Wagar"
+  keywords = "homepage, blog, science, informatics, development, programming"
+  images = [""]
+
+  # Directory name of your blog content (default is `content/posts`)
+  contentTypeName = "posts"
+  # Default theme "light" or "dark"
+  defaultTheme = "dark"
+
+  # Prefix of link to the git commit detail page. GitInfo must be enabled.
+  gitUrl = "https://github.com/ajmwagar/blog/commit/"
+
+# Social icons
+  [[params.social]]
+    name = "twitter"
+    url  = "https://twitter.com/ajmwagar/"
+
+  [[params.social]]
+    name = "email"
+    url  = "mailto:ajmw.subs@gmail.com"
+
+  [[params.social]]
+    name = "github"
+    url  = "https://github.com/ajmwagar/"
+
+  [[params.social]]
+    name = "linkedin"
+    url  = "https://www.linkedin.com/in/ajmwagar/"
+
+[languages]
+  [languages.en]
+    title = "Avery Wagar"
+    subtitle = "Software Developer"
+    keywords = ""
+    copyright = "Avery Wagar 2019"
+    readOtherPosts = "Read other posts"
+
+    [languages.en.params.logo]
+      logoText = "cd /home/ajmwagar"
+      logoHomeLink = "/"
+    # or
+    #
+    # path = "/img/your-example-logo.svg"
+    # alt = "Your example logo alt text"
+
+	# You can create a language based menu
+    # [languages.en.menu]
+    #   [[languages.en.menu.main]]
+    #     identifier = "about"
+    #     name = "About"
+    #     url = "/about"
+    #   [[languages.en.menu.main]]
+    #     identifier = "showcase"
+    #     name = "Showcase"
+    #     url = "/showcase"
+
+# And you can even create generic menu
+[menu]
+  [[menu.main]]
+    identifier = "about"
+    name       = "About"
+    url        = "/about"
+  [[menu.main]]
+    identifier = "blog"
+    name       = "Blog"
+    url        = "/posts"

@@ -1,0 +1,14 @@
+{
+  "results": [{
+    "id": "vim-tips-1",
+    "title": "Vim Tips and Tricks No. 1",
+    "content": "Welcome back my fellow Vim enthusiasts! Today we will be discussing a few shortcuts you can add to your __.vimrc__!\n## Find and Replace\nRefactoring code is a large part of any programmers daily routine. Sometime you have to refactor a variable across a whole file. \nIf you add the following code to your __.vimrc__\n```vim\n' Find and Replace\nmap <leader>fr :%s///g<left><left> ' Find and replace\nmap <leader>frl :s///g<left><left> ' Find and replace (current line only)```\nYou can refactor code with a breeze. Just search in Vim using `/` and then hit <leader>fr to start refactoring. Then type in the new word and hit enter. Boom. Your code is refactored.\n__Note:__ Currently there is no good way to refactor across multiple files. (Let me know in the comments if you find a way!)\n# Clearing searches\nAnother issue I have with Vim out of the box is searching cannot be cleared easily. So instead of typing a random string into your search bar, you can clear it with the following mapping:\n\n\n```vim\n' Clear searchs\nmap <leader><space> :let @/=''<cr> ' clear search```\n\n\n# Switching buffers\nWhile working across multiple files I like to use buffers. I added shortcuts to switch my buffers easily. \n\n\n```vim\n' Switching Buffers\nnoremap <leader>[ :bp<return>\nnoremap <leader>] :bn<return>\n```\n\n\nNow you can page through your buffers with ease.\n# Vim hard mode\nSo if you are new to Vim, or are still used to the 'Arrow keys.' You can enable the little known hard mode in Vim.\n\n\n```\" No arrow keys (Vim Hard mode)\nnoremap <Up> <NOP>\nnoremap <Down> <NOP>\nnoremap <Left> <NOP>\nnoremap <Right> <NOP>```\nNow you can ascend to the Master Vimmer you are meant to be.\n\n\n# Conclusion\nSo now that you have some new tools in your Vim toolbox. I hope you can extend your love for Vim. Be sure to check back soon for part 2! Let me know any other tips I should know in the comments.\n\n",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Vimlogo.svg/1200px-Vimlogo.svg.png",
+    "meta": {
+      "description": "Time for some Vim tricks!",
+      "published": "",
+      "author": "Avery Wagar"
+    }
+  }]
+}
+  
