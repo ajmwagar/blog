@@ -85,6 +85,10 @@
   </div>
   {{ end }}
 
+  <div class="pagination__title">
+    <span class="pagination__title-h">comments</span>
+    <hr />
+  </div>
   {{ if .Site.Params.comments }}
   <div id="comments" class="thin">
     {{- partial "comments.html" . -}}
