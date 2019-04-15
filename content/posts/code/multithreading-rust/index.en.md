@@ -11,15 +11,15 @@ tags:
   - Concurrency
 ---
 
-Multi-threading, Concurrency, and Parallelism are hard and can be scary. With problems like data-races and worrying about thread safety, it can be easy to stay away from them altogether. Luckily for us, Rust has our backs when it comes to thread safety and all the other perils that come our way when building Multi-threaded code. In-fact Rust's compiler will not let __compile__ code that has a potential data-race in it. Therefore we are free to write out code without fear.
+Multi-threading, Concurrency, and Parallelism are hard and can be scary. With problems like data-races and worrying about thread safety, it can be easy to stay away from them altogether. Luckily for us, Rust has our backs when it comes to thread safety and all the other perils that come our way when building Multi-threaded code. In-fact Rust's compiler will not let us __compile__ code that has a potential data-race in it. Therefore we are free to write all of our multi-threaded code without fear.
 
 ## Multi-threading
 
-There are multiple ways that Rust helps us prevent data-race and enforce thread safety. 
+There are multiple ways that Rust can help us prevent data-race and enforce thread safety. 
 
 ### Arc & Mutex
 
-One way that Rust provides is to use `Arc` and `Mutex` when sharing data across threads. For example, here we have an integer that we want multiple threads to mutate. We can protect the data and other threads by using a Mutex which ensures our data is not poisoned, more about that [here](https://doc.rust-lang.org/std/sync/struct.Mutex.html#poisoning). 
+One way that Rust provides helps prevents against data-races is to use `Arcs` and `Mutexes` when sharing data across threads. For example, here we have an integer that we want multiple threads to mutate. We can protect the data and other threads by using a Mutex which ensures our data is not poisoned, more about that [here](https://doc.rust-lang.org/std/sync/struct.Mutex.html#poisoning). 
 
 ```rust
 // Import the required types
@@ -206,4 +206,4 @@ We only need to change __2 lines__ to change our function from sequential to par
 
 ## Conclusion
 
-Rust, if applied in the right way, makes Multi-threading and Parallelism a breeze. Whether you use `Arcs` and `Mutexes` or `MPSC` channels, hopefully, you can proceed without fear when you have the urge to add Parallelism or Multi-threading into your next Rust project.
+Rust, if applied in the right way, makes Multi-threading and Parallelism a breeze. Whether you use `Arcs` and `Mutexes` or `MPSC` channels, hopefully, you can proceed without fear when you have the urge to add multiple threads or parallel code into your next Rust project.
