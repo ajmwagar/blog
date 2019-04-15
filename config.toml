@@ -2,8 +2,8 @@ baseurl = "/"
 languageCode = "en-us"
 theme = "hello-friend-ng"
 
-# googleAnalytics = ""
-# disqusShortname = ""
+googleAnalytics = "UA-102498484-1"
+disqusShortname = "averywagar"
 
 buildDrafts  = false
 buildFuture  = false
@@ -17,7 +17,7 @@ enableMissingTranslationPlaceholders = false
 disableRSS     = false
 disableSitemap = false
 disable404     = false
-disableHugoGeneratorInject = false
+disableHugoGeneratorInject = true
 
 [params]
   dateform        = "Jan 2, 2006"
@@ -92,3 +92,7 @@ disableHugoGeneratorInject = false
     identifier = "blog"
     name       = "Blog"
     url        = "/posts"
+  [[menu.main]]
+    identifier = "work"
+    name       = "Work"
+    url        = "/work"

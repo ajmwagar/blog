@@ -8,8 +8,6 @@ toc: false
 
 This weekend Seattle was home the second annual edition of GE2. 
 
-# GE2 2017
-
 GE2 stands for Gaming and Experiential Entertainment Summit.
 
 GE2 was home to a variety of different attractions. 
@@ -20,7 +18,7 @@ and everything in between. GE2 attracts all types of gamers.
 <!--![][Spartans]-->
 
 <!--[Spartans]: /static/api/images/SpartanCosplay.jpg_large 'Me with some Spartan Cosplays'-->
-<img src='/static/api/images/SpartanCosplay.jpg_large' width='800'>
+{{< image src="/img/SpartanCosplay.jpg_large" alt="SpartanCosplay" position="center" style="width:800px;">}}
 ## Esports (Rocket League)
 At the main stage, the competitive Rocket League teams from across Washington
 faced off. I witnessed a heated battle between UW and WSU.
@@ -34,7 +32,7 @@ UW didn't make back a single point that match.
 
 <!--[Esports]: /static/api/images/Esports.jpg_large 'Rocket League announcers'-->
 
-<img src='/static/api/images/Esports.jpg_large' width='800'>
+{{< image src="/img/Esports.jpg_large" alt="Esports Announcers" position="center" style="width:800px;">}}
 ## Virtual Reality | HTC Vive 
 
 
@@ -59,7 +57,7 @@ minutes in VR, even less if you came in a group.
 
 <!--[Vive]: /static/api/images/ViveBooth.jpg_large 'Vive booth'-->
 
-<img src='/static/api/images/ViveBooth.jpg_large' width='800'>
+{{< image src="/img/ViveBooth.jpg_large" alt="Vive Booth" position="center" style="width:800px;">}}
 ## Retro Game Arcade
 
 
@@ -87,7 +85,7 @@ track with LED lights for days!
 
 
 <!--Link picture of headset here-->
-<img src='/static/api/images/Headset.jpg' width='600'>
+{{< image src="/img/Headset.jpg" alt="Drone FOV Headset" position="center" style="width:600px;">}}
 
 > Me wearing a drone racing headset.
 
@@ -117,7 +115,7 @@ I got to experience Glider Island VR. A hang-gliding game in VR. But at GE2
 they had a massive contraption with a car seat hanging from a bar and a handle
 to grab onto to fly around in VR.
 
-<img src='/static/api/images/Glider.jpg' width='800'>
+{{< image src="/img/Glider.jpg" alt="Glider Island VR Experience" position="center" style="width:800px;">}}
 
 I also got to play with a really cool game creator, it allows users to easily
 implement controls from the best games of all time, such as Ninja Gaiden, Super
@@ -153,7 +151,7 @@ way, I will be going next year. So maybe I will see you there.
 
 <!--[Forza]: /static/api/images/ForzaGE2.jpg_large 'Forza 7 on Xbox One'-->
 
-<img src='/static/api/images/ForzaGE2.jpg_large' width='800'>
+{{< image src="/img/ForzaGE2.jpg_large" alt="Forza 7 on Xbox One" position="center" style="width:800px;">}}
 
 > Forza Seven.
 
