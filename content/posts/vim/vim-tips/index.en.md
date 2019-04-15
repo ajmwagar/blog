@@ -13,8 +13,8 @@ If you add the following code to your __.vimrc__
 
 ```vim
 " Find and Replace
-map <leader>fr :%s///g<left><left> ' Find and replace
-map <leader>frl :s///g<left><left> ' Find and replace (current line only)
+map <leader>fr :%s///g<left><left> " Find and replace
+map <leader>frl :s///g<left><left> " Find and replace (current line only)
 ```
 You can refactor code with a breeze. Just search in Vim using `/` and then hit <leader>fr to start refactoring. Then type in the new word and hit enter. Boom. Your code is refactored.
 __Note:__ Currently there is no good way to refactor across multiple files. (Let me know in the comments if you find a way!)
@@ -22,8 +22,9 @@ __Note:__ Currently there is no good way to refactor across multiple files. (Let
 # Clearing searches
 Another issue I have with Vim out of the box is searching cannot be cleared easily. So instead of typing a random string into your search bar, you can clear it with the following mapping:
 ```vim
-' Clear searchs
-map <leader><space> :let @/=''<cr> ' clear search```
+" Clear searchs
+map <leader><space> :let @/=''<cr> " clear search
+```
 
 
 # Switching buffers
@@ -31,7 +32,7 @@ While working across multiple files I like to use buffers. I added shortcuts to 
 
 
 ```vim
-' Switching Buffers
+" Switching Buffers
 noremap <leader>[ :bp<return>
 noremap <leader>] :bn<return>
 ```
