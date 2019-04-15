@@ -15,7 +15,7 @@ Multi-threading, Concurrency, and Parallelism are hard and can be scary. With pr
 
 ## Multi-threading
 
-There are multiple ways that Rust can help us prevent data-race and enforce thread safety. 
+There are multiple ways that Rust can help us prevent data-races and enforce thread safety. 
 
 ### Arc & Mutex
 
@@ -64,7 +64,7 @@ fn main() {
 }
 ```
 
-In the example above we safely mutate an integer across threads, this can be applied with larger data types, however, for event-based interaction across threads I recommend using an `MPSC` (Multi-Producer, Single Consumer) channel.
+In the example above, we safely mutate an integer across threads. This can be applied with larger data types, however, for event-based interaction across threads, I recommend using an `MPSC` (Multi-Producer, Single Consumer) channel.
 
 ### MPSC Channels
 
