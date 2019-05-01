@@ -51,7 +51,7 @@ developers use autocompleting to be faster at what we do!
 ### Installation
 
 To install Deoplete add the following to your `.vimrc`
-```viml
+```vim
 " Code completion
 if has('nvim')
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -65,7 +65,7 @@ endif
 ### Configuration 
 
 I recommend adding the following to your `.vimrc`:
-```viml
+```vim
 " Don't forget to start deoplete let g:deoplete#enable_at_startup = 1 " Less spam let g:deoplete#auto_complete_start_length = 2 
 " Use smartcase
 let g:deoplete#enable_smart_case = 1
@@ -103,14 +103,14 @@ syntax up in there.
 ### Installation
 Install the plugin by adding the following to your `.vimrc`
 
-```viml
+```vim
 " Java-completion
 Plug 'junegunn/vim-javacomplete2'
 ```
 
  __OR  if you have a fast machine__
 
-```viml
+```vim
 " Java-completion
 Plug 'junegunn/vim-javacomplete2', {'for': 'java'} " Load only for java files 
 ```
@@ -119,7 +119,7 @@ Plug 'junegunn/vim-javacomplete2', {'for': 'java'} " Load only for java files
 
 To get completion automatically when you open a Java file, add this to your `.vimrc`
 
-```viml
+```vim
 " Java completion
 autocmd FileType java setlocal omnifunc=javacomplete#Complete
 autocmd FileType java JCEnable
@@ -138,7 +138,7 @@ support including python. C#, C++, Lua, Haskell, JavaScript (yes including node.
 ### Installation
 So in order to magically fix all your code... add the following to your `.vimrc`
 
-```viml
+```vim
 Plug 'w0rp-ale'
 ```
 
@@ -148,7 +148,7 @@ You're done.
 
 Add this and your brand new linter will work!
 
-```viml
+```vim
 " Shorten error/warning flags
 let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'
@@ -189,7 +189,7 @@ For those of you who don't know what a snippet is: [Wikipedia - Snippet](https:/
 
 Install the plugin by adding the following to your `.vimrc`
 
-```viml
+```vim
 " Snippet manager
 Plug 'SirVer/ultisnips'
 ```
@@ -202,7 +202,7 @@ popcorn ladies and gentlemen...
 
 `.vimrc` config
 
-```viml
+```vim
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
 
 " Since we are already using Deoplete, and using tab with both doesn't work nice use <c-j> instead
@@ -234,7 +234,7 @@ Since this a Java guide, I will be using Java, but you get the point.
 Now it is time to add some snippets. For example, my `java.snippets` might look
 something like:
 
-```snippet
+```snippets
 priority 10
 
 
@@ -301,7 +301,7 @@ and more in a buffer to the right of your file
 
 ### Installation
 You can install TagBar by adding the following to your `.vimrc`
-```viml
+```vim
 Plug 'majutsushi/tagbar'
 ```
 ### Configuring
@@ -309,7 +309,7 @@ Plug 'majutsushi/tagbar'
 To open TagBar do `:TagbarToggle` 
 
 or add the following to your `.vimrc`
-```viml
+```vim
 " Ctrl-b to open Tagbar
 map <C-b> :TagbarToggle<CR>
 ```
@@ -328,7 +328,7 @@ Ctrlp is a great fuzzy finder which can be configured to use faster tools than g
 
 You can install Ctrl-P by adding the following to your `.vimrc`
 
-```viml
+```vim
 Plug 'ctrlpvim/ctrlp.vim'
 ```
 
@@ -336,7 +336,7 @@ Plug 'ctrlpvim/ctrlp.vim'
 
 Map Ctrl-p to open Ctrl-p.
 
-```viml
+```vim
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 
@@ -365,12 +365,12 @@ Some things you can do with NERD TREE includes:
 
 ### Installation
 You can install NERD TREE by adding the following to your `.vimrc`
-```viml
+```vim
 Plug 'scrooloose/nerdtree'
 ```
 ### Configuring
 Add this to your `.vimrc`
-```viml
+```vim
 " Open when no files were speficied on vim launch
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
@@ -388,7 +388,7 @@ Now we will go over some shortcuts you can add to your `.vimrc`
 
 Auto compile java with leader-m
 
-```viml
+```vim
 " Easy compile java in vim
 autocmd FileType java set makeprg=javac\ %
 set errorformat=%A%f:%l:\ %m,%-Z%p^,%-C.%#
@@ -398,7 +398,7 @@ set errorformat=%A%f:%l:\ %m,%-Z%p^,%-C.%#
 
 Open and close ALEs output window with leader-e leader-w
 
-```viml
+```vim
 "Loc List
 map <leader>e :lopen<CR>
 map <leader>w :lclose<CR>
@@ -414,7 +414,7 @@ map <leader>w :lclose<CR>
 
 2. Add the following to your `.vimrc` 
 
-```viml
+```vim
 function! CtrlPCommand()
   let c = 0
   let wincount = winnr('$')
@@ -463,7 +463,7 @@ __Shame on YOU__.
 You should know by now just how important it is to know everything that is in
 your vimrc! But fine, if you insist.
 
-```viml
+```vim
 call plug#begin('~/.vim/bundle')
 
 Plug 'Shougo/deoplete.nvim'
