@@ -56,7 +56,7 @@ comments = true
 
   [[params.social]]
     name = "email"
-    url  = "averywagar.com@gmail.com"
+    url  = "mailto:averywagar.com@gmail.com"
   [[params.social]]
     name = "github"
     url  = "https://github.com/ajmwagar/"
