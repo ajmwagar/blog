@@ -8,7 +8,7 @@ author: Avery Wagar
 ## Open-Source
 
 - [UFO][UFO_HOME], UAV/Drone library for Rust.
-- [lori][LORI_HOME], low-bandwith SLOW HTTP DOS tool
+- [lor-axe][LORAXE_HOME], low-bandwith SLOW HTTP DOS tool
 - [Vim-Deus][DEUS_HOME], Better color scheme for the late night coder.
 
 See my [Github Profile][GIT_HOME] for more projects.
@@ -59,7 +59,7 @@ On display at Paul Allen's Living Computers Museum
 
 [GIT_HOME]: https://github.com/ajmwagar
 [UFO_HOME]: https://github.com/ajmwagar/ufo
-[LORI_HOME]: https://github.com/ajmwagar/lori
+[LORAXE_HOME]: https://github.com/ajmwagar/lor-axe
 [DEUS_HOME]: https://github.com/ajmwagar/vim-deus
 
 
