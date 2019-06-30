@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Wayland on Avery Wagar</title>
+    <link>https://averywagar.com/tags/wayland/</link>
+    <description>Recent content in Wayland on Avery Wagar</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Avery Wagar</copyright>
+    <lastBuildDate>Sun, 30 Jun 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://averywagar.com/tags/wayland/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Oxidizing my Workflow: Writing a Wayland window manager in Rust - Part 1: Setting Up</title>
+      <link>https://averywagar.com/posts/2019/06/oxidizing-my-workflow-writing-a-wayland-window-manager-in-rust-part-1-setting-up/</link>
+      <pubDate>Sun, 30 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://averywagar.com/posts/2019/06/oxidizing-my-workflow-writing-a-wayland-window-manager-in-rust-part-1-setting-up/</guid>
+      <description>In this series, we will be creating a usable window manager for Wayland in Rust.
+Here are some goals for our window manager: - Fast - Rounded corners on windows - Tiling + Floating window support - TOML File configuration - Parallel / Concurrent programming model
+Note: I have installed Rust using the rustup installer. Please install rustup before continuing.
+Step one: Set up the project w/ Cargo cargo init --lib oxy # oxy can be replaced with whatever you want to call your window manager  This creates a new folder called oxy and adds a Cargo.</description>
+    </item>
+    
+  </channel>
+</rss>

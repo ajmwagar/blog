@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>https://averywagar.com/</loc>
+    <lastmod>2019-06-30T13:56:57-07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://averywagar.com/tags/concurrency/</loc>
+    <lastmod>2019-06-30T13:56:57-07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://averywagar.com/tags/multi-threading/</loc>
+    <lastmod>2019-06-30T13:56:57-07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://averywagar.com/posts/2019/06/oxidizing-my-workflow-writing-a-wayland-window-manager-in-rust-part-1-setting-up/</loc>
+    <lastmod>2019-06-30T13:56:57-07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://averywagar.com/posts/</loc>
+    <lastmod>2019-06-30T13:56:57-07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://averywagar.com/tags/programming/</loc>
+    <lastmod>2019-06-30T13:56:57-07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://averywagar.com/tags/rust/</loc>
+    <lastmod>2019-06-30T13:56:57-07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://averywagar.com/tags/</loc>
+    <lastmod>2019-06-30T13:56:57-07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://averywagar.com/tags/wayland/</loc>
+    <lastmod>2019-06-30T13:56:57-07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://averywagar.com/posts/2019/04/fearless-multi-threading-parallelism-with-rust/</loc>
+    <lastmod>2019-04-15T14:03:23-07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://averywagar.com/about/</loc>
+    <lastmod>2019-04-15T13:54:22-07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://averywagar.com/work/</loc>
+    <lastmod>2019-04-15T20:04:37-07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://averywagar.com/posts/2018/02/vim-tips-and-tricks-no.-1/</loc>
+    <lastmod>2019-04-14T20:32:51-07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://averywagar.com/tags/devtools/</loc>
+    <lastmod>2019-05-01T10:10:45-07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://averywagar.com/tags/vim/</loc>
+    <lastmod>2019-05-01T10:10:45-07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://averywagar.com/posts/2018/01/configuring-vim-for-java-development/</loc>
+    <lastmod>2019-05-01T10:10:45-07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://averywagar.com/tags/java/</loc>
+    <lastmod>2019-05-01T10:10:45-07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://averywagar.com/posts/2017/10/ge2-2017/</loc>
+    <lastmod>2019-04-14T20:32:51-07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://averywagar.com/tags/ge2/</loc>
+    <lastmod>2019-04-14T20:32:51-07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://averywagar.com/tags/drones/</loc>
+    <lastmod>2019-04-14T20:32:51-07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://averywagar.com/tags/esports/</loc>
+    <lastmod>2019-04-14T20:32:51-07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://averywagar.com/tags/virtual-reality/</loc>
+    <lastmod>2019-04-14T20:32:51-07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://averywagar.com/index.html</loc>
+    <priority>0</priority>
+  </url>
+  
+</urlset>

@@ -1,0 +1,1155 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Posts on Avery Wagar</title>
+        <link>https://averywagar.com/posts/</link>
+        <description>Recent content in Posts on Avery Wagar</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <copyright>Avery Wagar</copyright>
+        <lastBuildDate>Sun, 30 Jun 2019 00:00:00 +0000</lastBuildDate>
+        <atom:link href="https://averywagar.com/posts/index.xml" rel="self" type="application/rss+xml" />
+        
+        <item>
+            <title>Oxidizing my Workflow: Writing a Wayland window manager in Rust - Part 1: Setting Up</title>
+            <link>https://averywagar.com/posts/2019/06/oxidizing-my-workflow-writing-a-wayland-window-manager-in-rust-part-1-setting-up/</link>
+            <pubDate>Sun, 30 Jun 2019 00:00:00 +0000</pubDate>
+            
+            <guid>https://averywagar.com/posts/2019/06/oxidizing-my-workflow-writing-a-wayland-window-manager-in-rust-part-1-setting-up/</guid>
+            <description>In this series, we will be creating a usable window manager for Wayland in Rust.
+Here are some goals for our window manager: - Fast - Rounded corners on windows - Tiling + Floating window support - TOML File configuration - Parallel / Concurrent programming model
+Note: I have installed Rust using the rustup installer. Please install rustup before continuing.
+Step one: Set up the project w/ Cargo cargo init --lib oxy # oxy can be replaced with whatever you want to call your window manager  This creates a new folder called oxy and adds a Cargo.</description>
+            <content type="html"><![CDATA[
+
+<p>In this series, we will be creating a usable window manager for Wayland in Rust.</p>
+
+<p>Here are some goals for our window manager:
+- Fast
+- Rounded corners on windows
+- Tiling + Floating window support
+- <code>TOML</code> File configuration
+- Parallel / Concurrent programming model</p>
+
+<p><strong>Note: I have installed Rust using the <code>rustup</code> installer. Please install <a href="https://rustup.rs" target="_blank">rustup</a> before continuing.</strong></p>
+
+<h1 id="step-one-set-up-the-project-w-cargo">Step one: Set up the project w/ Cargo</h1>
+
+<pre><code class="language-bash">cargo init --lib oxy # oxy can be replaced with whatever you want to call your window manager
+</code></pre>
+
+<p>This creates a new folder called <code>oxy</code> and adds a <code>Cargo.toml</code> file and a <code>lib.rs</code> file in <code>./oxy/src/</code>.</p>
+
+<p>Now, let us create the binary files which will be available to users at runtime.</p>
+
+<pre><code class="language-bash">cd oxy
+mkdir ./src/bin
+touch ./src/bin/oxy.rs # This is the actual window manager binary
+touch ./src/bin/oxymsg.rs # This binary lets us send messages/commands to oxy at runtime
+</code></pre>
+
+<p>A little breakdown of each file:
+- <code>oxy.rs</code>: The actual window manager, this gets called at bootup and starts the window manager
+- <code>oxymsg.rs</code>: This binary lets us send <code>oxy</code> messages and commands at runtime, this is helpful for re-configuring on the fly.</p>
+
+<p>In both <code>oxy.rs</code> and <code>oxymsg.rs</code> add this:</p>
+
+<pre><code class="language-rust">fn main() {
+    println!(&quot;Hello, Wayland!&quot;);
+}
+</code></pre>
+
+<p>This allows for <code>Cargo</code> to actually build the binaries. We need to be able to build so we can do testing. We will change these file dramatically later on in the series.</p>
+
+<h1 id="step-two-set-up-a-place-for-tests-benchmarks">Step two: Set up a place for tests/benchmarks</h1>
+
+<p>Since performance is a goal for our window manager, we should monitor our performance over time with benchmarks and prevent regressions with unit tests. Luckily for us, Rust has 1st party support for both tests and benchmarks.</p>
+
+<p>It just takes a second to setup:</p>
+
+<pre><code class="language-bash">mkdir ./tests ./benches
+touch ./tests/common.rs ./benches/common.rs
+</code></pre>
+
+<p>In <code>./tests/common.rs</code> add this:</p>
+
+<pre><code class="language-rust">#[test]
+fn it_works() {
+    assert_eq!(2 + 2, 4);
+}
+</code></pre>
+
+<p>Now we can do <code>cargo test</code>. It should output the following:</p>
+
+<pre><code class="language-bash">$ cargo test
+   Compiling oxy v0.1.0 (/home/ajmwagar/usr/dev/git/rust/oxy)
+    Finished dev [unoptimized + debuginfo] target(s) in 1.57s
+     Running target/debug/deps/oxy-eb66d2a31f6edeb1
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
+
+     Running target/debug/deps/oxy-8a8962f5d923f1bf
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
+
+     Running target/debug/deps/oxymsg-b94e3c7436b46996
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
+
+     Running target/debug/deps/common-7af7b5cd849c06d8
+
+running 1 test
+test it_works ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
+
+   Doc-tests oxy
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
+
+</code></pre>
+
+<p>Great! Now we having unit testing set up. We will get into benchmarking later in the series (once we have code to benchmark).</p>
+
+<p>This commit: <a href="https://github.com/ajmwagar/oxy/commit/98f36f100bd2ed5dc61bc51782cdc72a99638d20" target="_blank">98f36f1</a> is where your project should be.</p>
+
+<p><strong>Stay tuned for part two!</strong></p>
+]]></content>
+        </item>
+        
+        <item>
+            <title>Fearless Multi-threading &amp; Parallelism with Rust</title>
+            <link>https://averywagar.com/posts/2019/04/fearless-multi-threading-parallelism-with-rust/</link>
+            <pubDate>Mon, 15 Apr 2019 00:00:00 +0000</pubDate>
+            
+            <guid>https://averywagar.com/posts/2019/04/fearless-multi-threading-parallelism-with-rust/</guid>
+            <description>Multi-threading, Concurrency, and Parallelism are hard and can be scary. With problems like data-races and worrying about thread safety, it can be easy to stay away from them altogether. Luckily for us, Rust has our backs when it comes to thread safety and all the other perils that come our way when building Multi-threaded code. In-fact Rust&amp;rsquo;s compiler will not let us compile code that has a potential data-race in it.</description>
+            <content type="html"><![CDATA[
+
+<p>Multi-threading, Concurrency, and Parallelism are hard and can be scary. With problems like data-races and worrying about thread safety, it can be easy to stay away from them altogether. Luckily for us, Rust has our backs when it comes to thread safety and all the other perils that come our way when building Multi-threaded code. In-fact Rust&rsquo;s compiler will not let us <strong>compile</strong> code that has a potential data-race in it. Therefore we are free to write all of our multi-threaded code without fear.</p>
+
+<h2 id="multi-threading">Multi-threading</h2>
+
+<p>There are multiple ways that Rust can help us prevent data-races and enforce thread safety.</p>
+
+<h3 id="arc-mutex">Arc &amp; Mutex</h3>
+
+<p>One way that Rust provides protection from data-races is to use <code>Arcs</code> and <code>Mutexes</code> when sharing data across threads. For example, here we have an integer that we want multiple threads to mutate. We can protect the data and other threads by using a Mutex which ensures our data is not poisoned, more about that <a href="https://doc.rust-lang.org/std/sync/struct.Mutex.html#poisoning" target="_blank">here</a>.</p>
+
+<pre><code class="language-rust">// Import the required types
+use std::sync::{Arc, Mutex};
+use std::thread;
+
+const N: usize = 10;
+
+fn main() {
+  // Here we're using an Arc to share memory among threads, 
+  // and the data inside the Arc is protected with a mutex.
+  let safe_data = Arc::new(Mutex::new(0));
+
+  println!(&quot;Data: {:?}&quot;, safe_data); // Mutex: { data: 0 }
+
+  // Create an array of thread handles 
+  let handles = (0..N)
+    .into_iter()
+    .map(|_| {
+      let data = Arc::clone(&amp;safe_data);
+      thread::spawn(move || {
+        // Unlock the mutex so the thread may mutate the data
+        // We unwrap() the return value to assert that we are not       
+        // expecting threads to ever fail while holding the lock.
+        let mut data = data.lock().unwrap();
+
+        // Mutate the data
+        *data += 1;
+
+        // the lock is unlocked here when `data` goes out of scope.
+      })
+    })
+    .collect::&lt;Vec&lt;thread::JoinHandle&lt;_&gt;&gt;&gt;();  
+
+  // Wait for threads to finish mutating safe_data
+  for thread in handles {
+    thread.join().unwrap();
+  }
+
+  // Print out mutated data
+  println!(&quot;Data: {:?}&quot;, safe_data); // Mutex: { data: 10 } or N
+}
+</code></pre>
+
+<p>In the example above, we safely mutate an integer across threads. This can be applied with larger data types, however, for event-based interaction across threads, I recommend using an <code>MPSC</code> (Multi-Producer, Single Consumer) channel.</p>
+
+<h3 id="mpsc-channels">MPSC Channels</h3>
+
+<p><code>std::sync::mpsc</code> channels are a quick and safe way to share <em>events</em> across threads.</p>
+
+<p>For example, we can use the <code>mpsc</code> channels in a small banking program:</p>
+
+<pre><code class="language-rust">use std::sync::mpsc::channel;
+use std::thread;
+
+/// Transaction enum
+enum Transaction {
+    Widthdrawl(f64),
+    Deposit(f64)
+}
+
+fn main() {
+    // set the number of customers
+    let n_customers = 10;
+
+    // Create a &quot;customer&quot; and a &quot;banker&quot;
+    let (customers, banker) = channel();
+
+    let handles = (0..n_customers).into_iter().map(|i| {
+
+        // Create another &quot;customer&quot;
+        let customer = customers.clone();
+
+        // Create the customer thread
+        let handle = thread::spawn(move || {
+            // Define Transaction
+            let trans_type = match i % 2 {
+                0 =&gt; Transaction::Deposit(i as f64 * 10.0),
+                _ =&gt; Transaction::Widthdrawl(i as f64 * 5.0)
+            };
+
+            // Send the Transaction
+            customer.send(trans_type).unwrap();
+        });
+
+        handle
+
+    }).collect::&lt;Vec&lt;thread::JoinHandle&lt;_&gt;&gt;&gt;();
+
+    // Wait for threads to finish
+    for handle in handles {
+        handle.join().unwrap()
+    }
+
+    // Create a bank thread
+    let bank = thread::spawn(move || {
+        // Create a value
+        let mut bank: f64 = 10000.0;
+
+        // Perform the transactions in order
+        banker.into_iter().for_each(|i| {
+            match i {
+                // Subtract for Widthdrawls 
+                Transaction::Widthdrawl(amount) =&gt; {
+                    bank = bank - amount;
+                },
+                // Add for deposits
+                Transaction::Deposit(amount) =&gt; {
+                    bank = bank + amount;
+                },
+            }
+
+            println!(&quot;Bank value: {}&quot;, bank);
+        });
+    });
+
+    // Let the bank finish
+    bank.join().unwrap();
+}
+</code></pre>
+
+<p>The output of the above program would look something like this:</p>
+
+<pre><code>Bank value: 10000
+Bank value: 9995
+Bank value: 10015
+Bank value: 10000
+Bank value: 9975
+Bank value: 10035
+Bank value: 10075
+Bank value: 10040
+Bank value: 10120
+Bank value: 10075
+</code></pre>
+
+<p>As you can see <code>mpsc</code> channels are a powerful tool. Whether is sending events from a game loop to different threads, or high-frequency transactions, channels are a powerful tool when it comes to dealing with events and threads.</p>
+
+<h2 id="parallelism-with-rayon">Parallelism with Rayon</h2>
+
+<p>Now on to <strong>Parallelism</strong>. <a href="https://github.com/rayon-rs/rayon" target="_blank">Rayon</a> is a Rust Library or &ldquo;crate&rdquo; that makes this dead simple.</p>
+
+<p>Just add this to your <code>Cargo.toml</code>:</p>
+
+<pre><code class="language-toml">[dependencies]
+rayon = &quot;1.0&quot;
+</code></pre>
+
+<p>And add this to your <code>src/main.rs</code>:</p>
+
+<pre><code class="language-rust">use rayon::prelude::*;
+</code></pre>
+
+<p>Rayon comes with a strong parallel iterator API. That means that most of the time all you need to do to achieve <strong>Parallelism</strong> is replacing your <code>.iter()</code> calls with <code>.par_iter()</code> and your <code>.into_iter()</code> calls with <code>.into_par_iter()</code>.</p>
+
+<p>For example here is a Factorial function that is <strong>not</strong> executing in parallel:</p>
+
+<pre><code class="language-rust">/// Compute the Factorial using a plain iterator.
+fn factorial(n: u32) -&gt; BigUint {
+  (1..n + 1)
+    .into_iter()
+    .map(BigUint::from)
+    .fold(BigUint::one(), Mul::mul)
+}
+</code></pre>
+
+<p>And this is a Factorial function that <strong>is</strong> executing in parallel:</p>
+
+<pre><code class="language-rust">/// Compute the Factorial using a parallel iterator.
+fn factorial(n: u32) -&gt; BigUint {
+  (1..n + 1)
+    .into_par_iter() // This line is different
+    .map(BigUint::from)
+    .reduce_with(Mul::mul).unwrap() // And this line is different
+}
+</code></pre>
+
+<p>We only need to change <strong>2 lines</strong> to change our function from sequential to parallel. There are plenty more examples of using Rayon in the <code>/rayon-demo</code> folder in their <a href="https://github.com/rayon-rs/rayon/tree/master/rayon-demo" target="_blank">git repository</a>.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Rust, if applied in the right way, makes Multi-threading and Parallelism a breeze. Whether you use <code>Arcs</code> and <code>Mutexes</code> or <code>MPSC</code> channels, hopefully, you can proceed without fear when you have the urge to add multiple threads or parallel code into your next Rust project.</p>
+]]></content>
+        </item>
+        
+        <item>
+            <title>Vim Tips and Tricks No. 1</title>
+            <link>https://averywagar.com/posts/2018/02/vim-tips-and-tricks-no.-1/</link>
+            <pubDate>Fri, 02 Feb 2018 13:35:00 +0100</pubDate>
+            
+            <guid>https://averywagar.com/posts/2018/02/vim-tips-and-tricks-no.-1/</guid>
+            <description>Welcome back my fellow Vim enthusiasts! Today we will be discussing a few shortcuts you can add to your .vimrc!
+Find and Replace Refactoring code is a large part of any programmers daily routine. Sometime you have to refactor a variable across a whole file. If you add the following code to your .vimrc
+&amp;quot; Find and Replace map &amp;lt;leader&amp;gt;fr :%s///g&amp;lt;left&amp;gt;&amp;lt;left&amp;gt; &amp;quot; Find and replace map &amp;lt;leader&amp;gt;frl :s///g&amp;lt;left&amp;gt;&amp;lt;left&amp;gt; &amp;quot; Find and replace (current line only)  You can refactor code with a breeze.</description>
+            <content type="html"><![CDATA[
+
+<p>Welcome back my fellow Vim enthusiasts! Today we will be discussing a few shortcuts you can add to your <strong>.vimrc</strong>!</p>
+
+<h2 id="find-and-replace">Find and Replace</h2>
+
+<p>Refactoring code is a large part of any programmers daily routine. Sometime you have to refactor a variable across a whole file.
+If you add the following code to your <strong>.vimrc</strong></p>
+
+<pre><code class="language-vim">&quot; Find and Replace
+map &lt;leader&gt;fr :%s///g&lt;left&gt;&lt;left&gt; &quot; Find and replace
+map &lt;leader&gt;frl :s///g&lt;left&gt;&lt;left&gt; &quot; Find and replace (current line only)
+</code></pre>
+
+<p>You can refactor code with a breeze. Just search in Vim using <code>/</code> and then hit <leader>fr to start refactoring. Then type in the new word and hit enter. Boom. Your code is refactored.
+<strong>Note:</strong> Currently there is no good way to refactor across multiple files. (Let me know in the comments if you find a way!)</p>
+
+<h1 id="clearing-searches">Clearing searches</h1>
+
+<p>Another issue I have with Vim out of the box is searching cannot be cleared easily. So instead of typing a random string into your search bar, you can clear it with the following mapping:</p>
+
+<pre><code class="language-vim">&quot; Clear searchs
+map &lt;leader&gt;&lt;space&gt; :let @/=''&lt;cr&gt; &quot; clear search
+</code></pre>
+
+<h1 id="switching-buffers">Switching buffers</h1>
+
+<p>While working across multiple files I like to use buffers. I added shortcuts to switch my buffers easily.</p>
+
+<pre><code class="language-vim">&quot; Switching Buffers
+noremap &lt;leader&gt;[ :bp&lt;return&gt;
+noremap &lt;leader&gt;] :bn&lt;return&gt;
+</code></pre>
+
+<p>Now you can page through your buffers with ease.</p>
+
+<h1 id="vim-hard-mode">Vim hard mode</h1>
+
+<p>So if you are new to Vim, or are still used to the &lsquo;Arrow keys.&rsquo; You can enable the little known hard mode in Vim.</p>
+
+<pre><code class="language-vim">&quot; No arrow keys (Vim Hard mode)
+noremap &lt;Up&gt; &lt;NOP&gt;
+noremap &lt;Down&gt; &lt;NOP&gt;
+noremap &lt;Left&gt; &lt;NOP&gt;
+noremap &lt;Right&gt; &lt;NOP&gt;
+</code></pre>
+
+<p>Now you can ascend to the Master Vimmer you are meant to be.</p>
+
+<h1 id="conclusion">Conclusion</h1>
+
+<p>So now that you have some new tools in your Vim toolbox. I hope you can extend your love for Vim. Be sure to check back soon for part 2! Let me know any other tips I should know in the comments.</p>
+]]></content>
+        </item>
+        
+        <item>
+            <title>Configuring Vim for Java Development</title>
+            <link>https://averywagar.com/posts/2018/01/configuring-vim-for-java-development/</link>
+            <pubDate>Thu, 11 Jan 2018 13:35:00 +0100</pubDate>
+            
+            <guid>https://averywagar.com/posts/2018/01/configuring-vim-for-java-development/</guid>
+            <description>Welcome back, my fellow Vimmers.
+Today I will show you how to convert (Neo)Vim into a Java IDE. We will be discussing multiple plugins, mappings, and external tools in this post.
+Plugins So in my .vimrc I have a plethora of different plugins directly related to Java development.
+ Deoplete Javacomplete2 Ale Ultisnips Tagbar Ctrl-P NERD-TREE   Also we will be assuming that you have vim-plug installed as you plugin manager.</description>
+            <content type="html"><![CDATA[
+
+<p>Welcome back, my fellow Vimmers.</p>
+
+<p>Today I will show you how to convert (Neo)Vim into a Java IDE.
+We will be discussing multiple plugins, mappings, and external tools in this
+post.</p>
+
+<h1 id="plugins">Plugins</h1>
+
+<p>So in my <code>.vimrc</code> I have a plethora of different plugins directly related to
+Java development.</p>
+
+<ul>
+<li><a href="https://github.com/Shougo/deoplete.nvim" target="_blank">Deoplete</a></li>
+<li><a href="https://github.com/artur-shaik/vim-Javacomplete2" target="_blank">Javacomplete2</a></li>
+<li><a href="https://github.com/w0rp/ale" target="_blank">Ale</a></li>
+<li><a href="https://github.com/SirVer/ultisnips" target="_blank">Ultisnips</a></li>
+<li><a href="https://github.com/majutsushi/tagbar" target="_blank">Tagbar</a></li>
+<li><a href="https://github.com/kien/ctrlp.vim" target="_blank">Ctrl-P</a></li>
+<li><a href="https://github.com/scrooloose/nerdtree" target="_blank">NERD-TREE</a></li>
+</ul>
+
+<blockquote>
+<p>Also we will be assuming that you have
+<a href="https://github.com/junegunn/vim-plug" target="_blank">vim-plug</a> installed as you plugin
+manager. If you don&rsquo;t, I recommend getting it. but if you don&rsquo;t want to make the
+switch you can find all of the installation instructions on the plugins GitHub.</p>
+</blockquote>
+
+<p><strong>BE SURE TO RUN <code>:PlugInstall</code> WHEN WE ARE DONE!</strong></p>
+
+<h2 id="deoplete-nvim">Deoplete.nvim</h2>
+
+<p>So autocompletion in programming has been a hot topic recently. As many
+developers are claiming that we rely too much on autocompletion and don&rsquo;t
+learn as much about the actual syntax of the language. I disagree. I think that
+developers use autocompleting to be faster at what we do!</p>
+
+<blockquote>
+<p><strong>Note</strong>: this plugin only works on <a href="https://neovim.io" target="_blank">NeoVim</a>. Or with Vim 8
+and python support installed</p>
+</blockquote>
+
+<p><img src="https://camo.githubusercontent.com/cfdefba43971bd44d466ead357bb296e38d7f88c/68747470733a2f2f6d656469612e67697068792e636f6d2f6d656469612f6c344b6930316d30314939424f485745302f67697068792e676966" alt="deoplete JavaScript" /></p>
+
+<h3 id="installation">Installation</h3>
+
+<p>To install Deoplete add the following to your <code>.vimrc</code></p>
+
+<pre><code class="language-vim">&quot; Code completion
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
+</code></pre>
+
+<h3 id="configuration">Configuration</h3>
+
+<p>I recommend adding the following to your <code>.vimrc</code>:</p>
+
+<pre><code class="language-vim">&quot; Don't forget to start deoplete let g:deoplete#enable_at_startup = 1 &quot; Less spam let g:deoplete#auto_complete_start_length = 2 
+&quot; Use smartcase
+let g:deoplete#enable_smart_case = 1
+
+
+&quot; Setup completion sources
+let g:deoplete#sources = {}
+
+&quot; IMPORTANT: PLEASE INSTALL JAVACOMPLETE2  AND ULTISNIPS OR DONT ADD THIS LINE!
+&quot; =====================================
+
+let g:deoplete#sources.java = ['jc', 'javacomplete2', 'file', 'buffer', 'ultisnips']
+
+&quot; =====================================
+
+&quot;&quot;use TAB as the mapping
+inoremap &lt;silent&gt;&lt;expr&gt; &lt;TAB&gt;
+    \ pumvisible() ?  &quot;\&lt;C-n&gt;&quot; :
+    \ &lt;SID&gt;check_back_space() ? &quot;\&lt;TAB&gt;&quot; :
+    \ deoplete#mappings#manual_complete()
+function! s:check_back_space() abort &quot;&quot; {{{
+    let col = col('.') - 1
+    return !col || getline('.')[col - 1]  =~ '\s'
+endfunction &quot;&quot; }}}
+</code></pre>
+
+<p>Now you&rsquo;re ready to go!</p>
+
+<h2 id="vim-javacomplete2">Vim-Javacomplete2</h2>
+
+<p>So now that we have a working completion plugin for vim let&rsquo;s get some Java
+syntax up in there.</p>
+
+<h3 id="installation-1">Installation</h3>
+
+<p>Install the plugin by adding the following to your <code>.vimrc</code></p>
+
+<pre><code class="language-vim">&quot; Java-completion
+Plug 'junegunn/vim-javacomplete2'
+</code></pre>
+
+<p><strong>OR  if you have a fast machine</strong></p>
+
+<pre><code class="language-vim">&quot; Java-completion
+Plug 'junegunn/vim-javacomplete2', {'for': 'java'} &quot; Load only for java files 
+</code></pre>
+
+<h3 id="configuring">Configuring</h3>
+
+<p>To get completion automatically when you open a Java file, add this to your <code>.vimrc</code></p>
+
+<pre><code class="language-vim">&quot; Java completion
+autocmd FileType java setlocal omnifunc=javacomplete#Complete
+autocmd FileType java JCEnable
+</code></pre>
+
+<h2 id="ale">ALE</h2>
+
+<p>Another great plugin I use (not just for Java) is ALE. Which stands for Asynchronous Linting Engine, which basically means that it tells you if you miswrote any code, and it&rsquo;s really fast.</p>
+
+<p>You can use ale for other languages than just Java, it has a long list of
+support including python. C#, C++, Lua, Haskell, JavaScript (yes including node.js), a full list is available <a href="https://github.com/w0rp/ale#supported-languages" target="_blank">here</a></p>
+
+<p><img src="https://github.com/w0rp/ale/blob/master/img/example.gif?raw=true" alt="ale gif" /></p>
+
+<h3 id="installation-2">Installation</h3>
+
+<p>So in order to magically fix all your code&hellip; add the following to your <code>.vimrc</code></p>
+
+<pre><code class="language-vim">Plug 'w0rp-ale'
+</code></pre>
+
+<p>You&rsquo;re done.</p>
+
+<h3 id="configuring-1">Configuring</h3>
+
+<p>Add this and your brand new linter will work!</p>
+
+<pre><code class="language-vim">&quot; Shorten error/warning flags
+let g:ale_echo_msg_error_str = 'E'
+let g:ale_echo_msg_warning_str = 'W'
+&quot; I have some custom icons for errors and warnings but feel free to change them.
+let g:ale_sign_error = '✘✘'
+let g:ale_sign_warning = '⚠⚠'
+
+&quot; Disable or enable loclist at the bottom of vim 
+&quot; Comes down to personal preferance.
+let g:ale_open_list = 0
+let g:ale_loclist = 0
+
+
+&quot; Setup compilers for languages
+
+let g:ale_linters = {
+      \  'cs':['syntax', 'semantic', 'issues'],
+      \  'python': ['pylint'],
+      \  'java': ['javac']
+      \ }
+
+</code></pre>
+
+<p>That&rsquo;s it. Now enjoy your nonerroneous code!</p>
+
+<h2 id="ultisnips">UltiSnips</h2>
+
+<p>Another tool I like to use is Ultisnips, a snippet manager worthy of your time.
+For those of you who don&rsquo;t know what a snippet is: <a href="https://en.wikipedia.org/wiki/Snippet_(programming)" target="_blank">Wikipedia - Snippet</a></p>
+
+<blockquote>
+<p><strong>Note</strong>: This one takes a bit longer to set up. But can be extremely rewarding.</p>
+</blockquote>
+
+<p><img src="https://camo.githubusercontent.com/296aecf30e1607233814196db6bd3f5f47e70c73/68747470733a2f2f7261772e6769746875622e636f6d2f5369725665722f756c7469736e6970732f6d61737465722f646f632f64656d6f2e676966" alt="Ultisnips Gif" /></p>
+
+<h3 id="installation-3">Installation</h3>
+
+<p>Install the plugin by adding the following to your <code>.vimrc</code></p>
+
+<pre><code class="language-vim">&quot; Snippet manager
+Plug 'SirVer/ultisnips'
+</code></pre>
+
+<h3 id="configuring-2">Configuring</h3>
+
+<p>So as a mentioned above this one takes a lot longer to setup, so grab your
+popcorn ladies and gentlemen&hellip;</p>
+
+<p><code>.vimrc</code> config</p>
+
+<pre><code class="language-vim">&quot; Trigger configuration. Do not use &lt;tab&gt; if you use https://github.com/Valloric/YouCompleteMe.
+
+&quot; Since we are already using Deoplete, and using tab with both doesn't work nice use &lt;c-j&gt; instead
+let g:UltiSnipsExpandTrigger=&quot;&lt;c-j&gt;&quot;
+let g:UltiSnipsJumpForwardTrigger=&quot;&lt;c-b&gt;&quot;
+let g:UltiSnipsJumpBackwardTrigger=&quot;&lt;c-z&gt;&quot;
+
+&quot; If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit=&quot;vertical&quot;
+
+let g:UltiSnipsSnippetDirectories = ['~/.vim/UltiSnips', 'UltiSnips']
+let g:UltiSnipsSnippetsDir=&quot;~/.vim/UltiSnips&quot;
+</code></pre>
+
+<p>Alright now that we have set up Vim to use snippets. Let&rsquo;s add some to our
+Ultisnips directory.</p>
+
+<p><code>cd ~/.vim/UltiSnips/</code></p>
+
+<p>Now that we are here, add some snippets files depending on what programming language you want.</p>
+
+<p><code>touch ./&lt;programming language here&gt;.snippets</code></p>
+
+<p>Since this a Java guide, I will be using Java, but you get the point.</p>
+
+<h4 id="adding-snippets">Adding snippets</h4>
+
+<p>Now it is time to add some snippets. For example, my <code>java.snippets</code> might look
+something like:</p>
+
+<pre><code class="language-snippets">priority 10
+
+
+# System.out.println();
+snippet sout &quot;System.out.println();&quot; bA
+System.out.println($0);
+endsnippet
+
+snippet br &quot;break&quot; bA
+break;
+endsnippet
+
+snippet cs &quot;case&quot; b
+case $1:
+    $2
+$0
+endsnippet
+
+snippet ca &quot;catch&quot; b
+catch (${1:Exception} ${2:e})`!p nl(snip)`{
+    $0
+}
+endsnippet
+
+# Main method for Java Class
+snippet main &quot;public static void main()&quot; bA
+public static void main (String[] args){
+    $0
+}
+endsnippet
+
+# if statement
+snippet if &quot;If this then that&quot; bA
+if ($1){
+    $2
+}
+$3
+endsnippet
+
+# Else if statement
+snippet elif &quot;else if this then that&quot; bA
+else if ($1){
+    $2
+}
+$3
+endsnippet
+
+snippet for &quot;for(int i; i &lt; imax; i++)&quot; bA
+for ($1; $2; $3){
+    $4
+}
+
+endsnippet
+</code></pre>
+
+<p>This allows me to type <code>sout</code> and get <code>System.out.println();</code>, or <code>br</code> turns to <code>break;</code>, or <code>ca</code> to <code>catch (e)</code>. There are a lot more snippets in this file which I won&rsquo;t get into detail for your sake. But if you&rsquo;re interested you can read more <a href="https://github.com/SirVer/ultisnips/blob/master/doc/UltiSnips.txt" target="_blank">here</a>.</p>
+
+<h2 id="tagbar">TagBar</h2>
+
+<p>Another tool I like using is TagBar a tool that shows you the methods variables
+and more in a buffer to the right of your file</p>
+
+<p><img src="https://camo.githubusercontent.com/f5065c1dda4cbd6df6eed89c4086e31fc1774b2e/68747470733a2f2f692e696d6775722e636f6d2f6e3462705076332e706e67" alt="tagbar" /></p>
+
+<h3 id="installation-4">Installation</h3>
+
+<p>You can install TagBar by adding the following to your <code>.vimrc</code></p>
+
+<pre><code class="language-vim">Plug 'majutsushi/tagbar'
+</code></pre>
+
+<h3 id="configuring-3">Configuring</h3>
+
+<p>To open TagBar do <code>:TagbarToggle</code></p>
+
+<p>or add the following to your <code>.vimrc</code></p>
+
+<pre><code class="language-vim">&quot; Ctrl-b to open Tagbar
+map &lt;C-b&gt; :TagbarToggle&lt;CR&gt;
+</code></pre>
+
+<p>Now you can use Ctrl-b to open Tagbar.</p>
+
+<h2 id="ctrlp-vim">CtrlP.vim</h2>
+
+<p>Ctrlp is a great fuzzy finder which can be configured to use faster tools than grep.  It can search buffers, files, and more!</p>
+
+<p><img src="https://camo.githubusercontent.com/0a0b4c0d24a44d381cbad420ecb285abc2aaa4cb/687474703a2f2f692e696d6775722e636f6d2f7949796e722e706e67" alt="ctrlp" /></p>
+
+<h3 id="installation-5">Installation</h3>
+
+<p>You can install Ctrl-P by adding the following to your <code>.vimrc</code></p>
+
+<pre><code class="language-vim">Plug 'ctrlpvim/ctrlp.vim'
+</code></pre>
+
+<h3 id="configuring-4">Configuring</h3>
+
+<p>Map Ctrl-p to open Ctrl-p.</p>
+
+<pre><code class="language-vim">let g:ctrlp_map = '&lt;c-p&gt;'
+let g:ctrlp_cmd = 'CtrlP'
+
+&quot; use current git repo/file director with ctrl p
+let g:ctrlp_working_path_mode = 'ra'
+</code></pre>
+
+<h2 id="nerd-tree">NERD TREE</h2>
+
+<p>NERD TREE is an advance netrw replacement for Vim, I am not saying that there
+is anything wrong with netrw. However, I do think many would agree with me when
+I say that NERD TREE is more <em>user freindly</em>.</p>
+
+<p><img src="https://github.com/scrooloose/nerdtree/raw/master/screenshot.png?Raw=true" alt="nerdtree" /></p>
+
+<p>Some things you can do with NERD TREE includes:</p>
+
+<ul>
+<li>Manages files
+
+<ul>
+<li>Move</li>
+<li>Rename</li>
+<li>Delete</li>
+<li>Create</li>
+</ul></li>
+<li>Check git statuses (i.e. install nerdtree-git-plugin)</li>
+<li>Change working directory</li>
+</ul>
+
+<h3 id="installation-6">Installation</h3>
+
+<p>You can install NERD TREE by adding the following to your <code>.vimrc</code></p>
+
+<pre><code class="language-vim">Plug 'scrooloose/nerdtree'
+</code></pre>
+
+<h3 id="configuring-5">Configuring</h3>
+
+<p>Add this to your <code>.vimrc</code></p>
+
+<pre><code class="language-vim">&quot; Open when no files were speficied on vim launch
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 &amp;&amp; !exists(&quot;s:std_in&quot;) | NERDTree | endif
+
+&quot; Toggle nerdtree
+map &lt;C-n&gt; :NERDTreeToggle&lt;CR&gt;
+</code></pre>
+
+<p>Now you can use your new file tree.</p>
+
+<h1 id="mappings">Mappings</h1>
+
+<p>Now we will go over some shortcuts you can add to your <code>.vimrc</code></p>
+
+<h2 id="quick-compile">Quick Compile</h2>
+
+<p>Auto compile java with leader-m</p>
+
+<pre><code class="language-vim">&quot; Easy compile java in vim
+autocmd FileType java set makeprg=javac\ %
+set errorformat=%A%f:%l:\ %m,%-Z%p^,%-C.%#
+</code></pre>
+
+<h2 id="loc-list-ale-output">Loc List (ALE Output)</h2>
+
+<p>Open and close ALEs output window with leader-e leader-w</p>
+
+<pre><code class="language-vim">&quot;Loc List
+map &lt;leader&gt;e :lopen&lt;CR&gt;
+map &lt;leader&gt;w :lclose&lt;CR&gt;
+</code></pre>
+
+<h1 id="external-tools">External Tools</h1>
+
+<h2 id="use-ripgrep-rg-with-ctrlp">Use RipGrep (RG) with Ctrlp</h2>
+
+<ol>
+<li><p>Make sure <a href="https://github.com/BurntSushi/ripgrep" target="_blank">RipGrep</a> is installed</p></li>
+
+<li><p>Add the following to your <code>.vimrc</code></p></li>
+</ol>
+
+<pre><code class="language-vim">function! CtrlPCommand()
+  let c = 0
+  let wincount = winnr('$')
+  &quot; Don't open it here if current buffer is not writable (e.g. NERDTree)
+  while !empty(getbufvar(+expand(&quot;&lt;abuf&gt;&quot;), &quot;&amp;buftype&quot;)) &amp;&amp; c &lt; wincount
+    exec 'wincmd w'
+    let c = c + 1
+  endwhile
+  exec 'CtrlP'
+endfunction
+let g:ctrlp_cmd = 'call CtrlPCommand()'
+
+&quot;RipGrep
+if executable('rg')
+  set grepprg=rg\ --color=never
+  let g:ctrlp_user_command = 'rg %s --files --color=never --glob &quot;&quot;'
+  let g:ctrlp_use_caching = 0
+endif
+let g:ctrlp_custom_ignore = {
+      \ 'dir':  '',
+      \ 'file': '\.so$\|\.dat$|\.DS_Store$|\.meta|\.zip|\.rar|\.ipa|\.apk',
+      \ }
+</code></pre>
+
+<ol>
+<li>Profit!</li>
+</ol>
+
+<h2 id="java-compilers-and-command-line-tools">Java compilers and command-line tools</h2>
+
+<ol>
+<li><p>Install the OpenJDK for your Java version these tend to perform better with
+Vim plugins and Linux.</p></li>
+
+<li><p>I have heard good things about JavaKit as an ALE compiler. Let me know what you think.</p></li>
+</ol>
+
+<h1 id="conclusion">Conclusion</h1>
+
+<p>Now that you have finished setting up your own <em>VimJ IDE</em>. You can now write
+some Java code in the coziness of your favorite text editor!</p>
+
+<h2 id="tl-dr">tl;dr</h2>
+
+<p>Wow, you&rsquo;re finally done! How does it feel?</p>
+
+<p>Oh, wait a minute&hellip; you didn&rsquo;t actually read this now did you?</p>
+
+<p>Whats this you want me to make a tl;dr?</p>
+
+<p><strong>Shame on YOU</strong>.
+You should know by now just how important it is to know everything that is in
+your vimrc! But fine, if you insist.</p>
+
+<pre><code class="language-vim">call plug#begin('~/.vim/bundle')
+
+Plug 'Shougo/deoplete.nvim'
+Plug 'artur-shaik/vim-javacomplete2' &quot; , { 'for': 'java'}
+Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle' }
+Plug 'SirVer/ultisnips'
+Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] }
+Plug 'w0rp/ale'
+Plug 'ctrlpvim/ctrlp.vim'
+
+call plug#end()
+&quot;Ctrlp Settings {{{
+
+let g:ctrlp_map = '&lt;c-p&gt;'
+
+let g:ctrlp_cmd = 'ctrlp'
+let g:ctrlp_dont_split = 'nerd'
+let g:ctrlp_working_path_mode = 'rw'
+set wildignore+=*/.git/*,*/tmp/*,*.swp/*,*/node_modules/*,*/temp/*,*/Builds/*,*/ProjectSettings/*
+&quot; Set no max file limit
+let g:ctrlp_max_files = 0
+&quot; Search from current directory instead of project root
+
+
+function! CtrlPCommand()
+  let c = 0
+  let wincount = winnr('$')
+  &quot; Don't open it here if current buffer is not writable (e.g. NERDTree)
+  while !empty(getbufvar(+expand(&quot;&lt;abuf&gt;&quot;), &quot;&amp;buftype&quot;)) &amp;&amp; c &lt; wincount
+    exec 'wincmd w'
+    let c = c + 1
+  endwhile
+  exec 'CtrlP'
+endfunction
+let g:ctrlp_cmd = 'call CtrlPCommand()'
+
+&quot;RipGrep
+if executable('rg')
+  set grepprg=rg\ --color=never
+  let g:ctrlp_user_command = 'rg %s --files --color=never --glob &quot;&quot;'
+  let g:ctrlp_use_caching = 0
+endif
+let g:ctrlp_custom_ignore = {
+      \ 'dir':  '',
+      \ 'file': '\.so$\|\.dat$|\.DS_Store$|\.meta|\.zip|\.rar|\.ipa|\.apk',
+      \ }
+&quot; }}}
+&quot;Ale Settings {{{
+
+let g:ale_echo_msg_error_str = 'E'
+let g:ale_echo_msg_warning_str = 'W'
+let g:ale_sign_error = '✘✘'
+let g:ale_sign_warning = '⚠⚠'
+let g:ale_open_list = 0
+let g:ale_loclist = 0
+&quot;g:ale_javascript_eslint_use_global = 1
+let g:ale_linters = {
+      \  'cs':['syntax', 'semantic', 'issues'],
+      \  'python': ['pylint'],
+      \  'java': ['javac']
+      \ }
+&quot; }}}
+&quot; Deoplete {{{
+
+let g:deoplete#enable_at_startup = 1
+
+let g:deoplete#auto_complete_start_length = 2
+let g:deoplete#sources = {}
+let g:deoplete#sources._=['buffer', 'ultisnips', 'file', 'dictionary']
+let g:deoplete#sources.javascript = ['tern', 'omni', 'file', 'buffer', 'ultisnips']
+
+&quot; Use smartcase.
+let g:deoplete#enable_smart_case = 1
+
+
+&quot;set completeopt-=preview
+
+&quot;&quot;use TAB as the mapping
+inoremap &lt;silent&gt;&lt;expr&gt; &lt;TAB&gt;
+      \ pumvisible() ?  &quot;\&lt;C-n&gt;&quot; :
+      \ &lt;SID&gt;check_back_space() ? &quot;\&lt;TAB&gt;&quot; :
+      \ deoplete#mappings#manual_complete()
+function! s:check_back_space() abort &quot;&quot; {{{
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~ '\s'
+endfunction &quot;&quot; }}}
+&quot; }}}
+&quot; UltiSnips {{{
+
+&quot; Trigger configuration. Do not use &lt;tab&gt; if you use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger=&quot;&lt;c-j&gt;&quot;
+let g:UltiSnipsJumpForwardTrigger=&quot;&lt;c-b&gt;&quot;
+let g:UltiSnipsJumpBackwardTrigger=&quot;&lt;c-z&gt;&quot;
+
+&quot; If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit=&quot;vertical&quot;
+
+let g:UltiSnipsSnippetDirectories = ['~/.vim/UltiSnips', 'UltiSnips']
+let g:UltiSnipsSnippetsDir=&quot;~/.vim/UltiSnips&quot;
+
+&quot; }}}
+&quot; Java {{{
+
+&quot; Easy compile java in vim
+autocmd FileType java set makeprg=javac\ %
+set errorformat=%A%f:%l:\ %m,%-Z%p^,%-C.%#
+&quot; Java completion
+autocmd FileType java setlocal omnifunc=javacomplete#Complete
+autocmd FileType java JCEnable
+&quot; }}}
+
+</code></pre>
+]]></content>
+        </item>
+        
+        <item>
+            <title>GE2 2017</title>
+            <link>https://averywagar.com/posts/2017/10/ge2-2017/</link>
+            <pubDate>Mon, 23 Oct 2017 13:35:00 +0100</pubDate>
+            
+            <guid>https://averywagar.com/posts/2017/10/ge2-2017/</guid>
+            <description>This weekend Seattle was home the second annual edition of GE2.
+GE2 stands for Gaming and Experiential Entertainment Summit.
+GE2 was home to a variety of different attractions. With Nerf wars and retro games to Virtual Reality, and everything in between. GE2 attracts all types of gamers.
+ Esports (Rocket League) At the main stage, the competitive Rocket League teams from across Washington faced off. I witnessed a heated battle between UW and WSU.</description>
+            <content type="html"><![CDATA[
+
+<p>This weekend Seattle was home the second annual edition of GE2.</p>
+
+<p>GE2 stands for Gaming and Experiential Entertainment Summit.</p>
+
+<p>GE2 was home to a variety of different attractions.
+With Nerf wars and retro games to Virtual Reality,
+and everything in between. GE2 attracts all types of gamers.</p>
+
+<!--Possibly link spartans-->
+
+<!--![][Spartans]-->
+
+<!--[Spartans]: /static/api/images/SpartanCosplay.jpg_large 'Me with some Spartan Cosplays'-->
+
+
+    <img src="/img/SpartanCosplay.jpg_large"  alt="SpartanCosplay"  class="center"  style="width:800px;"  />
+
+
+
+<h2 id="esports-rocket-league">Esports (Rocket League)</h2>
+
+<p>At the main stage, the competitive Rocket League teams from across Washington
+faced off. I witnessed a heated battle between UW and WSU.</p>
+
+<p>WSU won. 2-4, the final battle was a no-brainer. WSU took an early lead of 4-0.
+UW didn&rsquo;t make back a single point that match.</p>
+
+<!--Link announcers-->
+
+<!--![][Esports]-->
+
+<!--[Esports]: /static/api/images/Esports.jpg_large 'Rocket League announcers'-->
+
+
+    <img src="/img/Esports.jpg_large"  alt="Esports Announcers"  class="center"  style="width:800px;"  />
+
+
+
+<h2 id="virtual-reality-htc-vive">Virtual Reality | HTC Vive</h2>
+
+<p>HTC, Portal VR, and Virtual Sports were the three sponsors behind the 35 live
+VR
+pods during the event. Each equipped with an HTC Vive, with a deluxe audio
+strap,
+an MSI Dominator Pro, and enough Vive stickers for everyone at the event.</p>
+
+<p>By far the most popular demo was Duck Season, by Stress Level Zero, a remake of
+the classic Duck Hunt on the NES but in VR. You play as the hunter controlled
+by the boy who just got the game for his NES, you can even look behind you and
+see him controlling you.</p>
+
+<p>The lines for the VR Village, as a friend of mine likes to call it, were
+extremely
+long. People told me they had to wait for as long as 3 HOURS, just to play 10
+minutes in VR, even less if you came in a group.</p>
+
+<!--![][Vive]-->
+
+<!--[Vive]: /static/api/images/ViveBooth.jpg_large 'Vive booth'-->
+
+
+    <img src="/img/ViveBooth.jpg_large"  alt="Vive Booth"  class="center"  style="width:800px;"  />
+
+
+
+<h2 id="retro-game-arcade">Retro Game Arcade</h2>
+
+<p>The event also featured an extensive retro arcade. With games like Frogger,
+Galaga, Super Mario Bros, Pac-Man and more people enjoyed playing games for
+hours at a time.</p>
+
+<p>I played a total of 25 games of Street Fighter II with my friend. I beat him
+the first game, but after that, I lost every single game. I am still recovering to this day.</p>
+
+<h2 id="pro-drone-and-rc-car-racing">Pro Drone and RC Car Racing</h2>
+
+<p>During the event, there were races for both the Pro Aerial League and Diehard
+RC. You could hear the announcers the whole time, at any point in the event.</p>
+
+<h3 id="pro-drone-racing">Pro Drone Racing</h3>
+
+<p>The micro-racing drones that ruled the skies had a top speed of 90 mph, with
+each
+a pilot wearing a cyberpunk looking headset. The drones whizzed around a figure-8
+track with LED lights for days!</p>
+
+<!--Link picture of headset here-->
+
+
+    <img src="/img/Headset.jpg"  alt="Drone FOV Headset"  class="center"  style="width:600px;"  />
+
+
+
+<blockquote>
+<p>Me wearing a drone racing headset.</p>
+</blockquote>
+
+<p>We witnessed the final race of the season with a 12 minute race time. The
+winner, Wilbur scored 32 points (1 lap = 1 point).</p>
+
+<h3 id="rc-racing">RC Racing</h3>
+
+<p>While on the ground the custom build RC Racers of many excited hobbyists
+drove around the long course featuring multiple jumps, and a long vertical wall
+for them to ride up and over on.</p>
+
+<p>The cars had batteries the lasted for about 10
+  minutes each. But the races were 5 minutes only. So drivers could enjoy
+  2 races
+  with there car before needing to switch. Most of the cars were custom built and topped out at 75 mph.</p>
+
+<h2 id="indie-game-demos">Indie Game Demos</h2>
+
+<p>We also got to look at upcoming Indie Games. Such as Super Retromaker, Glider
+Island VR, Snowball Fight VR, and much more.</p>
+
+<p>I got to experience Glider Island VR. A hang-gliding game in VR. But at GE2
+they had a massive contraption with a car seat hanging from a bar and a handle
+to grab onto to fly around in VR.</p>
+
+
+    <img src="/img/Glider.jpg"  alt="Glider Island VR Experience"  class="center"  style="width:800px;"  />
+
+
+
+<p>I also got to play with a really cool game creator, it allows users to easily
+implement controls from the best games of all time, such as Ninja Gaiden, Super
+Mario Bros, Mega Man, and more. You can make your own levels, and share them with
+friends. Or play some of the community made games.</p>
+
+<h2 id="nerf-laser-tag-and-dodge-ball">Nerf, Laser Tag, and Dodge Ball</h2>
+
+<p>In addition to the RC, and Video games, there were some casual Nerf Rival and
+Laser Tag Games. Additionally, we played dodgeball, but no one
+really played by the rules.</p>
+
+<p>During the Nerf wars, a group of grown adults marched out onto the field and
+started picking on little kids. But to my surprise, the children teamed up and
+went all out on the adults to the point that they quit, and left the venue.</p>
+
+<p>We played some laser tag, but we were only allowed one magazine (of co2).
+After the magazine runs out you go to the back of the line. So players got to
+play for 2 minutes before they had to stop.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>By the end of the weekend, I enjoyed just about everything GE2 had to throw at
+me, and I&rsquo;ll be honest, I am satisfied. But more than that I am tired. Either
+way, I will be going next year. So maybe I will see you there.</p>
+
+<!--![][Forza]-->
+
+<!--[Forza]: /static/api/images/ForzaGE2.jpg_large 'Forza 7 on Xbox One'-->
+
+
+    <img src="/img/ForzaGE2.jpg_large"  alt="Forza 7 on Xbox One"  class="center"  style="width:800px;"  />
+
+
+
+<blockquote>
+<p>Forza Seven.</p>
+</blockquote>
+]]></content>
+        </item>
+        
+    </channel>
+</rss>
