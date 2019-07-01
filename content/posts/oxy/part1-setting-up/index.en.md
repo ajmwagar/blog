@@ -15,6 +15,7 @@ tags:
 In this series, we will be creating a usable window manager for Wayland in Rust.
 
 Here are some goals for our window manager:
+
 - Fast
 - Rounded corners on windows
 - Tiling + Floating window support
@@ -115,6 +116,11 @@ test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
 
 Great! Now we having unit testing set up. We will get into benchmarking later in the series (once we have code to benchmark).
 
-This commit: [98f36f1](https://github.com/ajmwagar/oxy/commit/98f36f100bd2ed5dc61bc51782cdc72a99638d20) is where your project should be.
+---
+
+Now that we have our project set up, we can get to the actual code...
 
 **Stay tuned for part two!**
+
+This commit: [98f36f1](https://github.com/ajmwagar/oxy/commit/98f36f100bd2ed5dc61bc51782cdc72a99638d20) is a reference to where you should be after this post.
+
