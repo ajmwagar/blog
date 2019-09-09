@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author"
+    content="Avery Wagar">
+<meta name="description"
+    content="Welcome back, my fellow Vimmers.
+Today I will show you how to convert (Neo)Vim into a Java IDE. We will be discussing multiple plugins, mappings, and external tools in this post.
+Plugins So in my .vimrc I have a plethora of different plugins directly related to Java development.
+ Deoplete Javacomplete2 Ale Ultisnips Tagbar Ctrl-P NERD-TREE   Also we will be assuming that you have vim-plug installed as you plugin manager." />
+<meta name="keywords" content="" />
+<meta name="robots" content="noodp" />
+<link rel="canonical" href="https://averywagar.com/posts/2018/01/configuring-vim-for-java-development/" />
+
+
+<title>
+    
+    Configuring Vim for Java Development :: Avery Wagar  — Software Developer
+    
+</title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.1/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+<link rel="stylesheet" href="https://averywagar.com/scss/main.min.099699ab246bf26f50616f7c9f00c79d46110459d1bd727b2d07d6fc09ece082.css">
+
+
+
+<link rel="apple-touch-icon" sizes="180x180" href="https://averywagar.com/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://averywagar.com/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="https://averywagar.com/favicon-16x16.png">
+<link rel="manifest" href="https://averywagar.com/site.webmanifest">
+<link rel="mask-icon" href="https://averywagar.com/safari-pinned-tab.svg" color="#252627">
+<link rel="shortcut icon" href="https://averywagar.com/favicon.ico">
+<meta name="theme-color" content="#252627">
+<meta itemprop="name" content="Configuring Vim for Java Development">
+<meta itemprop="description" content="Welcome back, my fellow Vimmers.
+Today I will show you how to convert (Neo)Vim into a Java IDE. We will be discussing multiple plugins, mappings, and external tools in this post.
+Plugins So in my .vimrc I have a plethora of different plugins directly related to Java development.
+ Deoplete Javacomplete2 Ale Ultisnips Tagbar Ctrl-P NERD-TREE   Also we will be assuming that you have vim-plug installed as you plugin manager.">
+
+
+<meta itemprop="datePublished" content="2018-01-11T13:35:00&#43;01:00" />
+<meta itemprop="dateModified" content="2019-05-01T10:10:45-07:00" />
+<meta itemprop="wordCount" content="1840">
+
+
+
+<meta itemprop="keywords" content="vim,java,devtools," />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://averywagar.com"/>
+
+<meta name="twitter:title" content="Configuring Vim for Java Development"/>
+<meta name="twitter:description" content="Welcome back, my fellow Vimmers.
+Today I will show you how to convert (Neo)Vim into a Java IDE. We will be discussing multiple plugins, mappings, and external tools in this post.
+Plugins So in my .vimrc I have a plethora of different plugins directly related to Java development.
+ Deoplete Javacomplete2 Ale Ultisnips Tagbar Ctrl-P NERD-TREE   Also we will be assuming that you have vim-plug installed as you plugin manager."/>
+
+
+
+
+<meta property="article:published_time" content="2018-01-11 13:35:00 &#43;0100 &#43;0100" />
+
+
+
+
+
+
+
+
+    </head>
+
+    <body class="dark-theme">
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="https://averywagar.com/" style="text-decoration: none;">
+    <div class="logo">
+        
+            <span class="logo__mark">></span>
+            <span class="logo__text">cd /home/ajmwagar</span>
+            <span class="logo__cursor"></span>
+        
+    </div>
+</a>
+
+
+        <span class="header__right">
+            
+                <nav class="menu">
+    <ul class="menu__inner"><li><a href="https://averywagar.com/about">About</a></li><li><a href="https://averywagar.com/posts">Blog</a></li><li><a href="https://averywagar.com/work">Work</a></li>
+    </ul>
+</nav>
+
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+            
+
+            <span class="theme-toggle"><svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+  3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+  13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
+</svg>
+</span>
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+<main class="post">
+
+  <div class="post-info">
+    <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>9 minutes
+
+      
+
+    </p>
+  </div>
+
+  <article>
+    <h1 class="post-title"><a href="https://averywagar.com/posts/2018/01/configuring-vim-for-java-development/">Configuring Vim for Java Development</a></h1>
+
+    
+
+    <div class="post-content">
+      
+
+<p>Welcome back, my fellow Vimmers.</p>
+
+<p>Today I will show you how to convert (Neo)Vim into a Java IDE.
+We will be discussing multiple plugins, mappings, and external tools in this
+post.</p>
+
+<h1 id="plugins">Plugins</h1>
+
+<p>So in my <code>.vimrc</code> I have a plethora of different plugins directly related to
+Java development.</p>
+
+<ul>
+<li><a href="https://github.com/Shougo/deoplete.nvim" target="_blank">Deoplete</a></li>
+<li><a href="https://github.com/artur-shaik/vim-Javacomplete2" target="_blank">Javacomplete2</a></li>
+<li><a href="https://github.com/w0rp/ale" target="_blank">Ale</a></li>
+<li><a href="https://github.com/SirVer/ultisnips" target="_blank">Ultisnips</a></li>
+<li><a href="https://github.com/majutsushi/tagbar" target="_blank">Tagbar</a></li>
+<li><a href="https://github.com/kien/ctrlp.vim" target="_blank">Ctrl-P</a></li>
+<li><a href="https://github.com/scrooloose/nerdtree" target="_blank">NERD-TREE</a></li>
+</ul>
+
+<blockquote>
+<p>Also we will be assuming that you have
+<a href="https://github.com/junegunn/vim-plug" target="_blank">vim-plug</a> installed as you plugin
+manager. If you don&rsquo;t, I recommend getting it. but if you don&rsquo;t want to make the
+switch you can find all of the installation instructions on the plugins GitHub.</p>
+</blockquote>
+
+<p><strong>BE SURE TO RUN <code>:PlugInstall</code> WHEN WE ARE DONE!</strong></p>
+
+<h2 id="deoplete-nvim">Deoplete.nvim</h2>
+
+<p>So autocompletion in programming has been a hot topic recently. As many
+developers are claiming that we rely too much on autocompletion and don&rsquo;t
+learn as much about the actual syntax of the language. I disagree. I think that
+developers use autocompleting to be faster at what we do!</p>
+
+<blockquote>
+<p><strong>Note</strong>: this plugin only works on <a href="https://neovim.io" target="_blank">NeoVim</a>. Or with Vim 8
+and python support installed</p>
+</blockquote>
+
+<p><img src="https://camo.githubusercontent.com/cfdefba43971bd44d466ead357bb296e38d7f88c/68747470733a2f2f6d656469612e67697068792e636f6d2f6d656469612f6c344b6930316d30314939424f485745302f67697068792e676966" alt="deoplete JavaScript" /></p>
+
+<h3 id="installation">Installation</h3>
+
+<p>To install Deoplete add the following to your <code>.vimrc</code></p>
+
+<pre><code class="language-vim">&quot; Code completion
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
+</code></pre>
+
+<h3 id="configuration">Configuration</h3>
+
+<p>I recommend adding the following to your <code>.vimrc</code>:</p>
+
+<pre><code class="language-vim">&quot; Don't forget to start deoplete let g:deoplete#enable_at_startup = 1 &quot; Less spam let g:deoplete#auto_complete_start_length = 2 
+&quot; Use smartcase
+let g:deoplete#enable_smart_case = 1
+
+
+&quot; Setup completion sources
+let g:deoplete#sources = {}
+
+&quot; IMPORTANT: PLEASE INSTALL JAVACOMPLETE2  AND ULTISNIPS OR DONT ADD THIS LINE!
+&quot; =====================================
+
+let g:deoplete#sources.java = ['jc', 'javacomplete2', 'file', 'buffer', 'ultisnips']
+
+&quot; =====================================
+
+&quot;&quot;use TAB as the mapping
+inoremap &lt;silent&gt;&lt;expr&gt; &lt;TAB&gt;
+    \ pumvisible() ?  &quot;\&lt;C-n&gt;&quot; :
+    \ &lt;SID&gt;check_back_space() ? &quot;\&lt;TAB&gt;&quot; :
+    \ deoplete#mappings#manual_complete()
+function! s:check_back_space() abort &quot;&quot; {{{
+    let col = col('.') - 1
+    return !col || getline('.')[col - 1]  =~ '\s'
+endfunction &quot;&quot; }}}
+</code></pre>
+
+<p>Now you&rsquo;re ready to go!</p>
+
+<h2 id="vim-javacomplete2">Vim-Javacomplete2</h2>
+
+<p>So now that we have a working completion plugin for vim let&rsquo;s get some Java
+syntax up in there.</p>
+
+<h3 id="installation-1">Installation</h3>
+
+<p>Install the plugin by adding the following to your <code>.vimrc</code></p>
+
+<pre><code class="language-vim">&quot; Java-completion
+Plug 'junegunn/vim-javacomplete2'
+</code></pre>
+
+<p><strong>OR  if you have a fast machine</strong></p>
+
+<pre><code class="language-vim">&quot; Java-completion
+Plug 'junegunn/vim-javacomplete2', {'for': 'java'} &quot; Load only for java files 
+</code></pre>
+
+<h3 id="configuring">Configuring</h3>
+
+<p>To get completion automatically when you open a Java file, add this to your <code>.vimrc</code></p>
+
+<pre><code class="language-vim">&quot; Java completion
+autocmd FileType java setlocal omnifunc=javacomplete#Complete
+autocmd FileType java JCEnable
+</code></pre>
+
+<h2 id="ale">ALE</h2>
+
+<p>Another great plugin I use (not just for Java) is ALE. Which stands for Asynchronous Linting Engine, which basically means that it tells you if you miswrote any code, and it&rsquo;s really fast.</p>
+
+<p>You can use ale for other languages than just Java, it has a long list of
+support including python. C#, C++, Lua, Haskell, JavaScript (yes including node.js), a full list is available <a href="https://github.com/w0rp/ale#supported-languages" target="_blank">here</a></p>
+
+<p><img src="https://github.com/w0rp/ale/blob/master/img/example.gif?raw=true" alt="ale gif" /></p>
+
+<h3 id="installation-2">Installation</h3>
+
+<p>So in order to magically fix all your code&hellip; add the following to your <code>.vimrc</code></p>
+
+<pre><code class="language-vim">Plug 'w0rp-ale'
+</code></pre>
+
+<p>You&rsquo;re done.</p>
+
+<h3 id="configuring-1">Configuring</h3>
+
+<p>Add this and your brand new linter will work!</p>
+
+<pre><code class="language-vim">&quot; Shorten error/warning flags
+let g:ale_echo_msg_error_str = 'E'
+let g:ale_echo_msg_warning_str = 'W'
+&quot; I have some custom icons for errors and warnings but feel free to change them.
+let g:ale_sign_error = '✘✘'
+let g:ale_sign_warning = '⚠⚠'
+
+&quot; Disable or enable loclist at the bottom of vim 
+&quot; Comes down to personal preferance.
+let g:ale_open_list = 0
+let g:ale_loclist = 0
+
+
+&quot; Setup compilers for languages
+
+let g:ale_linters = {
+      \  'cs':['syntax', 'semantic', 'issues'],
+      \  'python': ['pylint'],
+      \  'java': ['javac']
+      \ }
+
+</code></pre>
+
+<p>That&rsquo;s it. Now enjoy your nonerroneous code!</p>
+
+<h2 id="ultisnips">UltiSnips</h2>
+
+<p>Another tool I like to use is Ultisnips, a snippet manager worthy of your time.
+For those of you who don&rsquo;t know what a snippet is: <a href="https://en.wikipedia.org/wiki/Snippet_(programming)" target="_blank">Wikipedia - Snippet</a></p>
+
+<blockquote>
+<p><strong>Note</strong>: This one takes a bit longer to set up. But can be extremely rewarding.</p>
+</blockquote>
+
+<p><img src="https://camo.githubusercontent.com/296aecf30e1607233814196db6bd3f5f47e70c73/68747470733a2f2f7261772e6769746875622e636f6d2f5369725665722f756c7469736e6970732f6d61737465722f646f632f64656d6f2e676966" alt="Ultisnips Gif" /></p>
+
+<h3 id="installation-3">Installation</h3>
+
+<p>Install the plugin by adding the following to your <code>.vimrc</code></p>
+
+<pre><code class="language-vim">&quot; Snippet manager
+Plug 'SirVer/ultisnips'
+</code></pre>
+
+<h3 id="configuring-2">Configuring</h3>
+
+<p>So as a mentioned above this one takes a lot longer to setup, so grab your
+popcorn ladies and gentlemen&hellip;</p>
+
+<p><code>.vimrc</code> config</p>
+
+<pre><code class="language-vim">&quot; Trigger configuration. Do not use &lt;tab&gt; if you use https://github.com/Valloric/YouCompleteMe.
+
+&quot; Since we are already using Deoplete, and using tab with both doesn't work nice use &lt;c-j&gt; instead
+let g:UltiSnipsExpandTrigger=&quot;&lt;c-j&gt;&quot;
+let g:UltiSnipsJumpForwardTrigger=&quot;&lt;c-b&gt;&quot;
+let g:UltiSnipsJumpBackwardTrigger=&quot;&lt;c-z&gt;&quot;
+
+&quot; If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit=&quot;vertical&quot;
+
+let g:UltiSnipsSnippetDirectories = ['~/.vim/UltiSnips', 'UltiSnips']
+let g:UltiSnipsSnippetsDir=&quot;~/.vim/UltiSnips&quot;
+</code></pre>
+
+<p>Alright now that we have set up Vim to use snippets. Let&rsquo;s add some to our
+Ultisnips directory.</p>
+
+<p><code>cd ~/.vim/UltiSnips/</code></p>
+
+<p>Now that we are here, add some snippets files depending on what programming language you want.</p>
+
+<p><code>touch ./&lt;programming language here&gt;.snippets</code></p>
+
+<p>Since this a Java guide, I will be using Java, but you get the point.</p>
+
+<h4 id="adding-snippets">Adding snippets</h4>
+
+<p>Now it is time to add some snippets. For example, my <code>java.snippets</code> might look
+something like:</p>
+
+<pre><code class="language-snippets">priority 10
+
+
+# System.out.println();
+snippet sout &quot;System.out.println();&quot; bA
+System.out.println($0);
+endsnippet
+
+snippet br &quot;break&quot; bA
+break;
+endsnippet
+
+snippet cs &quot;case&quot; b
+case $1:
+    $2
+$0
+endsnippet
+
+snippet ca &quot;catch&quot; b
+catch (${1:Exception} ${2:e})`!p nl(snip)`{
+    $0
+}
+endsnippet
+
+# Main method for Java Class
+snippet main &quot;public static void main()&quot; bA
+public static void main (String[] args){
+    $0
+}
+endsnippet
+
+# if statement
+snippet if &quot;If this then that&quot; bA
+if ($1){
+    $2
+}
+$3
+endsnippet
+
+# Else if statement
+snippet elif &quot;else if this then that&quot; bA
+else if ($1){
+    $2
+}
+$3
+endsnippet
+
+snippet for &quot;for(int i; i &lt; imax; i++)&quot; bA
+for ($1; $2; $3){
+    $4
+}
+
+endsnippet
+</code></pre>
+
+<p>This allows me to type <code>sout</code> and get <code>System.out.println();</code>, or <code>br</code> turns to <code>break;</code>, or <code>ca</code> to <code>catch (e)</code>. There are a lot more snippets in this file which I won&rsquo;t get into detail for your sake. But if you&rsquo;re interested you can read more <a href="https://github.com/SirVer/ultisnips/blob/master/doc/UltiSnips.txt" target="_blank">here</a>.</p>
+
+<h2 id="tagbar">TagBar</h2>
+
+<p>Another tool I like using is TagBar a tool that shows you the methods variables
+and more in a buffer to the right of your file</p>
+
+<p><img src="https://camo.githubusercontent.com/f5065c1dda4cbd6df6eed89c4086e31fc1774b2e/68747470733a2f2f692e696d6775722e636f6d2f6e3462705076332e706e67" alt="tagbar" /></p>
+
+<h3 id="installation-4">Installation</h3>
+
+<p>You can install TagBar by adding the following to your <code>.vimrc</code></p>
+
+<pre><code class="language-vim">Plug 'majutsushi/tagbar'
+</code></pre>
+
+<h3 id="configuring-3">Configuring</h3>
+
+<p>To open TagBar do <code>:TagbarToggle</code></p>
+
+<p>or add the following to your <code>.vimrc</code></p>
+
+<pre><code class="language-vim">&quot; Ctrl-b to open Tagbar
+map &lt;C-b&gt; :TagbarToggle&lt;CR&gt;
+</code></pre>
+
+<p>Now you can use Ctrl-b to open Tagbar.</p>
+
+<h2 id="ctrlp-vim">CtrlP.vim</h2>
+
+<p>Ctrlp is a great fuzzy finder which can be configured to use faster tools than grep.  It can search buffers, files, and more!</p>
+
+<p><img src="https://camo.githubusercontent.com/0a0b4c0d24a44d381cbad420ecb285abc2aaa4cb/687474703a2f2f692e696d6775722e636f6d2f7949796e722e706e67" alt="ctrlp" /></p>
+
+<h3 id="installation-5">Installation</h3>
+
+<p>You can install Ctrl-P by adding the following to your <code>.vimrc</code></p>
+
+<pre><code class="language-vim">Plug 'ctrlpvim/ctrlp.vim'
+</code></pre>
+
+<h3 id="configuring-4">Configuring</h3>
+
+<p>Map Ctrl-p to open Ctrl-p.</p>
+
+<pre><code class="language-vim">let g:ctrlp_map = '&lt;c-p&gt;'
+let g:ctrlp_cmd = 'CtrlP'
+
+&quot; use current git repo/file director with ctrl p
+let g:ctrlp_working_path_mode = 'ra'
+</code></pre>
+
+<h2 id="nerd-tree">NERD TREE</h2>
+
+<p>NERD TREE is an advance netrw replacement for Vim, I am not saying that there
+is anything wrong with netrw. However, I do think many would agree with me when
+I say that NERD TREE is more <em>user freindly</em>.</p>
+
+<p><img src="https://github.com/scrooloose/nerdtree/raw/master/screenshot.png?Raw=true" alt="nerdtree" /></p>
+
+<p>Some things you can do with NERD TREE includes:</p>
+
+<ul>
+<li>Manages files
+
+<ul>
+<li>Move</li>
+<li>Rename</li>
+<li>Delete</li>
+<li>Create</li>
+</ul></li>
+<li>Check git statuses (i.e. install nerdtree-git-plugin)</li>
+<li>Change working directory</li>
+</ul>
+
+<h3 id="installation-6">Installation</h3>
+
+<p>You can install NERD TREE by adding the following to your <code>.vimrc</code></p>
+
+<pre><code class="language-vim">Plug 'scrooloose/nerdtree'
+</code></pre>
+
+<h3 id="configuring-5">Configuring</h3>
+
+<p>Add this to your <code>.vimrc</code></p>
+
+<pre><code class="language-vim">&quot; Open when no files were speficied on vim launch
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 &amp;&amp; !exists(&quot;s:std_in&quot;) | NERDTree | endif
+
+&quot; Toggle nerdtree
+map &lt;C-n&gt; :NERDTreeToggle&lt;CR&gt;
+</code></pre>
+
+<p>Now you can use your new file tree.</p>
+
+<h1 id="mappings">Mappings</h1>
+
+<p>Now we will go over some shortcuts you can add to your <code>.vimrc</code></p>
+
+<h2 id="quick-compile">Quick Compile</h2>
+
+<p>Auto compile java with leader-m</p>
+
+<pre><code class="language-vim">&quot; Easy compile java in vim
+autocmd FileType java set makeprg=javac\ %
+set errorformat=%A%f:%l:\ %m,%-Z%p^,%-C.%#
+</code></pre>
+
+<h2 id="loc-list-ale-output">Loc List (ALE Output)</h2>
+
+<p>Open and close ALEs output window with leader-e leader-w</p>
+
+<pre><code class="language-vim">&quot;Loc List
+map &lt;leader&gt;e :lopen&lt;CR&gt;
+map &lt;leader&gt;w :lclose&lt;CR&gt;
+</code></pre>
+
+<h1 id="external-tools">External Tools</h1>
+
+<h2 id="use-ripgrep-rg-with-ctrlp">Use RipGrep (RG) with Ctrlp</h2>
+
+<ol>
+<li><p>Make sure <a href="https://github.com/BurntSushi/ripgrep" target="_blank">RipGrep</a> is installed</p></li>
+
+<li><p>Add the following to your <code>.vimrc</code></p></li>
+</ol>
+
+<pre><code class="language-vim">function! CtrlPCommand()
+  let c = 0
+  let wincount = winnr('$')
+  &quot; Don't open it here if current buffer is not writable (e.g. NERDTree)
+  while !empty(getbufvar(+expand(&quot;&lt;abuf&gt;&quot;), &quot;&amp;buftype&quot;)) &amp;&amp; c &lt; wincount
+    exec 'wincmd w'
+    let c = c + 1
+  endwhile
+  exec 'CtrlP'
+endfunction
+let g:ctrlp_cmd = 'call CtrlPCommand()'
+
+&quot;RipGrep
+if executable('rg')
+  set grepprg=rg\ --color=never
+  let g:ctrlp_user_command = 'rg %s --files --color=never --glob &quot;&quot;'
+  let g:ctrlp_use_caching = 0
+endif
+let g:ctrlp_custom_ignore = {
+      \ 'dir':  '',
+      \ 'file': '\.so$\|\.dat$|\.DS_Store$|\.meta|\.zip|\.rar|\.ipa|\.apk',
+      \ }
+</code></pre>
+
+<ol>
+<li>Profit!</li>
+</ol>
+
+<h2 id="java-compilers-and-command-line-tools">Java compilers and command-line tools</h2>
+
+<ol>
+<li><p>Install the OpenJDK for your Java version these tend to perform better with
+Vim plugins and Linux.</p></li>
+
+<li><p>I have heard good things about JavaKit as an ALE compiler. Let me know what you think.</p></li>
+</ol>
+
+<h1 id="conclusion">Conclusion</h1>
+
+<p>Now that you have finished setting up your own <em>VimJ IDE</em>. You can now write
+some Java code in the coziness of your favorite text editor!</p>
+
+<h2 id="tl-dr">tl;dr</h2>
+
+<p>Wow, you&rsquo;re finally done! How does it feel?</p>
+
+<p>Oh, wait a minute&hellip; you didn&rsquo;t actually read this now did you?</p>
+
+<p>Whats this you want me to make a tl;dr?</p>
+
+<p><strong>Shame on YOU</strong>.
+You should know by now just how important it is to know everything that is in
+your vimrc! But fine, if you insist.</p>
+
+<pre><code class="language-vim">call plug#begin('~/.vim/bundle')
+
+Plug 'Shougo/deoplete.nvim'
+Plug 'artur-shaik/vim-javacomplete2' &quot; , { 'for': 'java'}
+Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle' }
+Plug 'SirVer/ultisnips'
+Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] }
+Plug 'w0rp/ale'
+Plug 'ctrlpvim/ctrlp.vim'
+
+call plug#end()
+&quot;Ctrlp Settings {{{
+
+let g:ctrlp_map = '&lt;c-p&gt;'
+
+let g:ctrlp_cmd = 'ctrlp'
+let g:ctrlp_dont_split = 'nerd'
+let g:ctrlp_working_path_mode = 'rw'
+set wildignore+=*/.git/*,*/tmp/*,*.swp/*,*/node_modules/*,*/temp/*,*/Builds/*,*/ProjectSettings/*
+&quot; Set no max file limit
+let g:ctrlp_max_files = 0
+&quot; Search from current directory instead of project root
+
+
+function! CtrlPCommand()
+  let c = 0
+  let wincount = winnr('$')
+  &quot; Don't open it here if current buffer is not writable (e.g. NERDTree)
+  while !empty(getbufvar(+expand(&quot;&lt;abuf&gt;&quot;), &quot;&amp;buftype&quot;)) &amp;&amp; c &lt; wincount
+    exec 'wincmd w'
+    let c = c + 1
+  endwhile
+  exec 'CtrlP'
+endfunction
+let g:ctrlp_cmd = 'call CtrlPCommand()'
+
+&quot;RipGrep
+if executable('rg')
+  set grepprg=rg\ --color=never
+  let g:ctrlp_user_command = 'rg %s --files --color=never --glob &quot;&quot;'
+  let g:ctrlp_use_caching = 0
+endif
+let g:ctrlp_custom_ignore = {
+      \ 'dir':  '',
+      \ 'file': '\.so$\|\.dat$|\.DS_Store$|\.meta|\.zip|\.rar|\.ipa|\.apk',
+      \ }
+&quot; }}}
+&quot;Ale Settings {{{
+
+let g:ale_echo_msg_error_str = 'E'
+let g:ale_echo_msg_warning_str = 'W'
+let g:ale_sign_error = '✘✘'
+let g:ale_sign_warning = '⚠⚠'
+let g:ale_open_list = 0
+let g:ale_loclist = 0
+&quot;g:ale_javascript_eslint_use_global = 1
+let g:ale_linters = {
+      \  'cs':['syntax', 'semantic', 'issues'],
+      \  'python': ['pylint'],
+      \  'java': ['javac']
+      \ }
+&quot; }}}
+&quot; Deoplete {{{
+
+let g:deoplete#enable_at_startup = 1
+
+let g:deoplete#auto_complete_start_length = 2
+let g:deoplete#sources = {}
+let g:deoplete#sources._=['buffer', 'ultisnips', 'file', 'dictionary']
+let g:deoplete#sources.javascript = ['tern', 'omni', 'file', 'buffer', 'ultisnips']
+
+&quot; Use smartcase.
+let g:deoplete#enable_smart_case = 1
+
+
+&quot;set completeopt-=preview
+
+&quot;&quot;use TAB as the mapping
+inoremap &lt;silent&gt;&lt;expr&gt; &lt;TAB&gt;
+      \ pumvisible() ?  &quot;\&lt;C-n&gt;&quot; :
+      \ &lt;SID&gt;check_back_space() ? &quot;\&lt;TAB&gt;&quot; :
+      \ deoplete#mappings#manual_complete()
+function! s:check_back_space() abort &quot;&quot; {{{
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~ '\s'
+endfunction &quot;&quot; }}}
+&quot; }}}
+&quot; UltiSnips {{{
+
+&quot; Trigger configuration. Do not use &lt;tab&gt; if you use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger=&quot;&lt;c-j&gt;&quot;
+let g:UltiSnipsJumpForwardTrigger=&quot;&lt;c-b&gt;&quot;
+let g:UltiSnipsJumpBackwardTrigger=&quot;&lt;c-z&gt;&quot;
+
+&quot; If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit=&quot;vertical&quot;
+
+let g:UltiSnipsSnippetDirectories = ['~/.vim/UltiSnips', 'UltiSnips']
+let g:UltiSnipsSnippetsDir=&quot;~/.vim/UltiSnips&quot;
+
+&quot; }}}
+&quot; Java {{{
+
+&quot; Easy compile java in vim
+autocmd FileType java set makeprg=javac\ %
+set errorformat=%A%f:%l:\ %m,%-Z%p^,%-C.%#
+&quot; Java completion
+autocmd FileType java setlocal omnifunc=javacomplete#Complete
+autocmd FileType java JCEnable
+&quot; }}}
+
+</code></pre>
+
+    </div>
+  </article>
+
+  <hr />
+
+  <div class="post-info">
+    <p>
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg><span class="tag"><a href="https://averywagar.com/tags/vim">vim</a></span><span class="tag"><a href="https://averywagar.com/tags/java">java</a></span><span class="tag"><a href="https://averywagar.com/tags/devtools">devtools</a></span>
+    </p>
+
+    <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>1840 Words</p>
+
+    <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>2018-01-11 04:35 -0800</p>
+    <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-git-commit"><circle cx="12" cy="12" r="4"></circle><line x1="1.05" y1="12" x2="7" y2="12"></line><line x1="17.01" y1="12" x2="22.96" y2="12"></line></svg><a href="https://github.com/ajmwagar/blog/commit/a69a6ab9f29ca3223e4e27aa70bfdeb858163b8a" target="_blank" rel="noopener">a69a6ab</a> @ 2019-05-01</p>
+  </div>
+
+  
+  <div class="pagination">
+    <div class="pagination__title">
+      <span class="pagination__title-h">Read other posts</span>
+      <hr />
+    </div>
+
+    <div class="pagination__buttons">
+      
+      <span class="button next">
+        <a href="https://averywagar.com/posts/2017/10/ge2-2017/">
+          <span class="button__icon">←</span>
+          <span class="button__text">GE2 2017</span>
+        </a>
+      </span>
+      
+
+      
+      <span class="button previous">
+        <a href="https://averywagar.com/posts/2018/02/vim-tips-and-tricks-no.-1/">
+          <span class="button__text">Vim Tips and Tricks No. 1</span>
+          <span class="button__icon">→</span>
+        </a>
+      </span>
+      
+    </div>
+  </div>
+  
+
+  <div class="pagination__title">
+    <span class="pagination__title-h">comments</span>
+    <hr />
+  </div>
+  
+  <div id="comments" class="thin"><div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "averywagar" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+  
+</main>
+
+            </div>
+
+            
+                <footer class="footer">
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>&copy; 2019</span>
+            
+            <span>Avery Wagar</span>
+            <span> <a href="https://averywagar.com/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a></span>
+        </div>
+    </div>
+    <div class="footer__inner">
+        <div class="footer__content">
+
+        </div>
+    </div>
+    <div class="footer__inner">
+        <div class="footer__content">
+            
+            
+        </div>
+    </div>
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+
+
+<script type="text/javascript" src="https://averywagar.com/js/bundle.min.cf7871ed49474a80ed457154d24e61f7881adbe0f9384951a74ac46b688a39a4dbfa68bc6d37baeb058186de354ead3487d4ee7f083ea4cba860c48600b694f3.js" integrity="sha512-z3hx7UlHSoDtRXFU0k5h94ga2&#43;D5OElRp0rEa2iKOaTb&#43;mi8bTe66wWBht41Tq00h9Tufwg&#43;pMuoYMSGALaU8w=="></script>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-102498484-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+
+
+    </body>
+</html>

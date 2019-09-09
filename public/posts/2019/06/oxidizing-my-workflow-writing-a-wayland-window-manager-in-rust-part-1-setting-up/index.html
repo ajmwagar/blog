@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author"
+    content="Avery Wagar">
+<meta name="description"
+    content="In this series, we will be creating a usable window manager for Wayland in Rust.
+Here are some goals for our window manager:
+ Fast Rounded corners on windows Tiling &#43; Floating window support TOML File configuration Parallel / Concurrent programming model  Note: I have installed Rust using the rustup installer. Please install rustup before continuing.
+Step one: Set up the project w/ Cargo cargo init --lib oxy # oxy can be replaced with whatever you want to call your window manager  This creates a new folder called oxy and adds a Cargo." />
+<meta name="keywords" content="" />
+<meta name="robots" content="noodp" />
+<link rel="canonical" href="https://averywagar.com/posts/2019/06/oxidizing-my-workflow-writing-a-wayland-window-manager-in-rust-part-1-setting-up/" />
+
+
+<title>
+    
+    Oxidizing my Workflow: Writing a Wayland window manager in Rust - Part 1: Setting Up :: Avery Wagar  — Software Developer
+    
+</title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.1/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+<link rel="stylesheet" href="https://averywagar.com/scss/main.min.099699ab246bf26f50616f7c9f00c79d46110459d1bd727b2d07d6fc09ece082.css">
+
+
+
+<link rel="apple-touch-icon" sizes="180x180" href="https://averywagar.com/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://averywagar.com/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="https://averywagar.com/favicon-16x16.png">
+<link rel="manifest" href="https://averywagar.com/site.webmanifest">
+<link rel="mask-icon" href="https://averywagar.com/safari-pinned-tab.svg" color="#252627">
+<link rel="shortcut icon" href="https://averywagar.com/favicon.ico">
+<meta name="theme-color" content="#252627">
+<meta itemprop="name" content="Oxidizing my Workflow: Writing a Wayland window manager in Rust - Part 1: Setting Up">
+<meta itemprop="description" content="In this series, we will be creating a usable window manager for Wayland in Rust.
+Here are some goals for our window manager:
+ Fast Rounded corners on windows Tiling &#43; Floating window support TOML File configuration Parallel / Concurrent programming model  Note: I have installed Rust using the rustup installer. Please install rustup before continuing.
+Step one: Set up the project w/ Cargo cargo init --lib oxy # oxy can be replaced with whatever you want to call your window manager  This creates a new folder called oxy and adds a Cargo.">
+
+
+<meta itemprop="datePublished" content="2019-06-30T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2019-06-30T18:17:31-07:00" />
+<meta itemprop="wordCount" content="482">
+
+
+
+<meta itemprop="keywords" content="Rust,Wayland,Programming,Multi-threading,Concurrency," />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://averywagar.com"/>
+
+<meta name="twitter:title" content="Oxidizing my Workflow: Writing a Wayland window manager in Rust - Part 1: Setting Up"/>
+<meta name="twitter:description" content="In this series, we will be creating a usable window manager for Wayland in Rust.
+Here are some goals for our window manager:
+ Fast Rounded corners on windows Tiling &#43; Floating window support TOML File configuration Parallel / Concurrent programming model  Note: I have installed Rust using the rustup installer. Please install rustup before continuing.
+Step one: Set up the project w/ Cargo cargo init --lib oxy # oxy can be replaced with whatever you want to call your window manager  This creates a new folder called oxy and adds a Cargo."/>
+
+
+
+
+<meta property="article:published_time" content="2019-06-30 00:00:00 &#43;0000 UTC" />
+
+
+
+
+
+
+
+
+    </head>
+
+    <body class="dark-theme">
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="https://averywagar.com/" style="text-decoration: none;">
+    <div class="logo">
+        
+            <span class="logo__mark">></span>
+            <span class="logo__text">cd /home/ajmwagar</span>
+            <span class="logo__cursor"></span>
+        
+    </div>
+</a>
+
+
+        <span class="header__right">
+            
+                <nav class="menu">
+    <ul class="menu__inner"><li><a href="https://averywagar.com/about">About</a></li><li><a href="https://averywagar.com/posts">Blog</a></li><li><a href="https://averywagar.com/work">Work</a></li>
+    </ul>
+</nav>
+
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+            
+
+            <span class="theme-toggle"><svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+  3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+  13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
+</svg>
+</span>
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+<main class="post">
+
+  <div class="post-info">
+    <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>3 minutes
+
+      
+
+    </p>
+  </div>
+
+  <article>
+    <h1 class="post-title"><a href="https://averywagar.com/posts/2019/06/oxidizing-my-workflow-writing-a-wayland-window-manager-in-rust-part-1-setting-up/">Oxidizing my Workflow: Writing a Wayland window manager in Rust - Part 1: Setting Up</a></h1>
+
+    
+
+    <div class="post-content">
+      
+
+<p>In this series, we will be creating a usable window manager for Wayland in Rust.</p>
+
+<p>Here are some goals for our window manager:</p>
+
+<ul>
+<li>Fast</li>
+<li>Rounded corners on windows</li>
+<li>Tiling + Floating window support</li>
+<li><code>TOML</code> File configuration</li>
+<li>Parallel / Concurrent programming model</li>
+</ul>
+
+<p><strong>Note: I have installed Rust using the <code>rustup</code> installer. Please install <a href="https://rustup.rs" target="_blank">rustup</a> before continuing.</strong></p>
+
+<h1 id="step-one-set-up-the-project-w-cargo">Step one: Set up the project w/ Cargo</h1>
+
+<pre><code class="language-bash">cargo init --lib oxy # oxy can be replaced with whatever you want to call your window manager
+</code></pre>
+
+<p>This creates a new folder called <code>oxy</code> and adds a <code>Cargo.toml</code> file and a <code>lib.rs</code> file in <code>./oxy/src/</code>.</p>
+
+<p>Now, let us create the binary files which will be available to users at runtime.</p>
+
+<pre><code class="language-bash">cd oxy
+mkdir ./src/bin
+touch ./src/bin/oxy.rs # This is the actual window manager binary
+touch ./src/bin/oxymsg.rs # This binary lets us send messages/commands to oxy at runtime
+</code></pre>
+
+<p>A little breakdown of each file:
+- <code>oxy.rs</code>: The actual window manager, this gets called at bootup and starts the window manager
+- <code>oxymsg.rs</code>: This binary lets us send <code>oxy</code> messages and commands at runtime, this is helpful for re-configuring on the fly.</p>
+
+<p>In both <code>oxy.rs</code> and <code>oxymsg.rs</code> add this:</p>
+
+<pre><code class="language-rust">fn main() {
+    println!(&quot;Hello, Wayland!&quot;);
+}
+</code></pre>
+
+<p>This allows for <code>Cargo</code> to actually build the binaries. We need to be able to build so we can do testing. We will change these file dramatically later on in the series.</p>
+
+<h1 id="step-two-set-up-a-place-for-tests-benchmarks">Step two: Set up a place for tests/benchmarks</h1>
+
+<p>Since performance is a goal for our window manager, we should monitor our performance over time with benchmarks and prevent regressions with unit tests. Luckily for us, Rust has 1st party support for both tests and benchmarks.</p>
+
+<p>It just takes a second to setup:</p>
+
+<pre><code class="language-bash">mkdir ./tests ./benches
+touch ./tests/common.rs ./benches/common.rs
+</code></pre>
+
+<p>In <code>./tests/common.rs</code> add this:</p>
+
+<pre><code class="language-rust">#[test]
+fn it_works() {
+    assert_eq!(2 + 2, 4);
+}
+</code></pre>
+
+<p>Now we can do <code>cargo test</code>. It should output the following:</p>
+
+<pre><code class="language-bash">$ cargo test
+   Compiling oxy v0.1.0 (/home/ajmwagar/usr/dev/git/rust/oxy)
+    Finished dev [unoptimized + debuginfo] target(s) in 1.57s
+     Running target/debug/deps/oxy-eb66d2a31f6edeb1
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
+
+     Running target/debug/deps/oxy-8a8962f5d923f1bf
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
+
+     Running target/debug/deps/oxymsg-b94e3c7436b46996
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
+
+     Running target/debug/deps/common-7af7b5cd849c06d8
+
+running 1 test
+test it_works ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
+
+   Doc-tests oxy
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
+
+</code></pre>
+
+<p>Great! Now we having unit testing set up. We will get into benchmarking later in the series (once we have code to benchmark).</p>
+
+<hr />
+
+<p>Now that we have our project set up, we can get to the actual code&hellip;</p>
+
+<p><strong>Stay tuned for part two!</strong></p>
+
+<p>This commit: <a href="https://github.com/ajmwagar/oxy/commit/98f36f100bd2ed5dc61bc51782cdc72a99638d20" target="_blank">98f36f1</a> is a reference to where you should be after this post.</p>
+
+    </div>
+  </article>
+
+  <hr />
+
+  <div class="post-info">
+    <p>
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg><span class="tag"><a href="https://averywagar.com/tags/rust">Rust</a></span><span class="tag"><a href="https://averywagar.com/tags/wayland">Wayland</a></span><span class="tag"><a href="https://averywagar.com/tags/programming">Programming</a></span><span class="tag"><a href="https://averywagar.com/tags/multi-threading">Multi-threading</a></span><span class="tag"><a href="https://averywagar.com/tags/concurrency">Concurrency</a></span>
+    </p>
+
+    <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>482 Words</p>
+
+    <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>2019-06-29 17:00 -0700</p>
+    <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-git-commit"><circle cx="12" cy="12" r="4"></circle><line x1="1.05" y1="12" x2="7" y2="12"></line><line x1="17.01" y1="12" x2="22.96" y2="12"></line></svg><a href="https://github.com/ajmwagar/blog/commit/6c61f665e6b4720da1dd1541dc12216c93fa8852" target="_blank" rel="noopener">6c61f66</a> @ 2019-06-30</p>
+  </div>
+
+  
+  <div class="pagination">
+    <div class="pagination__title">
+      <span class="pagination__title-h">Read other posts</span>
+      <hr />
+    </div>
+
+    <div class="pagination__buttons">
+      
+      <span class="button next">
+        <a href="https://averywagar.com/posts/2019/04/fearless-multi-threading-parallelism-with-rust/">
+          <span class="button__icon">←</span>
+          <span class="button__text">Fearless Multi-threading &amp; Parallelism with Rust</span>
+        </a>
+      </span>
+      
+
+      
+    </div>
+  </div>
+  
+
+  <div class="pagination__title">
+    <span class="pagination__title-h">comments</span>
+    <hr />
+  </div>
+  
+  <div id="comments" class="thin"><div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "averywagar" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+  
+</main>
+
+            </div>
+
+            
+                <footer class="footer">
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>&copy; 2019</span>
+            
+            <span>Avery Wagar</span>
+            <span> <a href="https://averywagar.com/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a></span>
+        </div>
+    </div>
+    <div class="footer__inner">
+        <div class="footer__content">
+
+        </div>
+    </div>
+    <div class="footer__inner">
+        <div class="footer__content">
+            
+            
+        </div>
+    </div>
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+
+
+<script type="text/javascript" src="https://averywagar.com/js/bundle.min.cf7871ed49474a80ed457154d24e61f7881adbe0f9384951a74ac46b688a39a4dbfa68bc6d37baeb058186de354ead3487d4ee7f083ea4cba860c48600b694f3.js" integrity="sha512-z3hx7UlHSoDtRXFU0k5h94ga2&#43;D5OElRp0rEa2iKOaTb&#43;mi8bTe66wWBht41Tq00h9Tufwg&#43;pMuoYMSGALaU8w=="></script>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-102498484-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+
+
+    </body>
+</html>

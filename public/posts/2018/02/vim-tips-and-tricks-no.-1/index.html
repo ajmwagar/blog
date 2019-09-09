@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author"
+    content="Avery Wagar">
+<meta name="description"
+    content="Welcome back my fellow Vim enthusiasts! Today we will be discussing a few shortcuts you can add to your .vimrc!
+Find and Replace Refactoring code is a large part of any programmers daily routine. Sometime you have to refactor a variable across a whole file. If you add the following code to your .vimrc
+&amp;quot; Find and Replace map &amp;lt;leader&amp;gt;fr :%s///g&amp;lt;left&amp;gt;&amp;lt;left&amp;gt; &amp;quot; Find and replace map &amp;lt;leader&amp;gt;frl :s///g&amp;lt;left&amp;gt;&amp;lt;left&amp;gt; &amp;quot; Find and replace (current line only)  You can refactor code with a breeze." />
+<meta name="keywords" content="" />
+<meta name="robots" content="noodp" />
+<link rel="canonical" href="https://averywagar.com/posts/2018/02/vim-tips-and-tricks-no.-1/" />
+
+
+<title>
+    
+    Vim Tips and Tricks No. 1 :: Avery Wagar  — Software Developer
+    
+</title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.1/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+<link rel="stylesheet" href="https://averywagar.com/scss/main.min.099699ab246bf26f50616f7c9f00c79d46110459d1bd727b2d07d6fc09ece082.css">
+
+
+
+<link rel="apple-touch-icon" sizes="180x180" href="https://averywagar.com/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://averywagar.com/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="https://averywagar.com/favicon-16x16.png">
+<link rel="manifest" href="https://averywagar.com/site.webmanifest">
+<link rel="mask-icon" href="https://averywagar.com/safari-pinned-tab.svg" color="#252627">
+<link rel="shortcut icon" href="https://averywagar.com/favicon.ico">
+<meta name="theme-color" content="#252627">
+<meta itemprop="name" content="Vim Tips and Tricks No. 1">
+<meta itemprop="description" content="Welcome back my fellow Vim enthusiasts! Today we will be discussing a few shortcuts you can add to your .vimrc!
+Find and Replace Refactoring code is a large part of any programmers daily routine. Sometime you have to refactor a variable across a whole file. If you add the following code to your .vimrc
+&quot; Find and Replace map &lt;leader&gt;fr :%s///g&lt;left&gt;&lt;left&gt; &quot; Find and replace map &lt;leader&gt;frl :s///g&lt;left&gt;&lt;left&gt; &quot; Find and replace (current line only)  You can refactor code with a breeze.">
+
+
+<meta itemprop="datePublished" content="2018-02-02T13:35:00&#43;01:00" />
+<meta itemprop="dateModified" content="2019-04-14T20:32:51-07:00" />
+<meta itemprop="wordCount" content="320">
+
+
+
+<meta itemprop="keywords" content="vim,devtools," />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://averywagar.com"/>
+
+<meta name="twitter:title" content="Vim Tips and Tricks No. 1"/>
+<meta name="twitter:description" content="Welcome back my fellow Vim enthusiasts! Today we will be discussing a few shortcuts you can add to your .vimrc!
+Find and Replace Refactoring code is a large part of any programmers daily routine. Sometime you have to refactor a variable across a whole file. If you add the following code to your .vimrc
+&quot; Find and Replace map &lt;leader&gt;fr :%s///g&lt;left&gt;&lt;left&gt; &quot; Find and replace map &lt;leader&gt;frl :s///g&lt;left&gt;&lt;left&gt; &quot; Find and replace (current line only)  You can refactor code with a breeze."/>
+
+
+
+
+<meta property="article:published_time" content="2018-02-02 13:35:00 &#43;0100 &#43;0100" />
+
+
+
+
+
+
+
+
+    </head>
+
+    <body class="dark-theme">
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="https://averywagar.com/" style="text-decoration: none;">
+    <div class="logo">
+        
+            <span class="logo__mark">></span>
+            <span class="logo__text">cd /home/ajmwagar</span>
+            <span class="logo__cursor"></span>
+        
+    </div>
+</a>
+
+
+        <span class="header__right">
+            
+                <nav class="menu">
+    <ul class="menu__inner"><li><a href="https://averywagar.com/about">About</a></li><li><a href="https://averywagar.com/posts">Blog</a></li><li><a href="https://averywagar.com/work">Work</a></li>
+    </ul>
+</nav>
+
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+            
+
+            <span class="theme-toggle"><svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+  3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+  13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
+</svg>
+</span>
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+<main class="post">
+
+  <div class="post-info">
+    <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>2 minutes
+
+      
+
+    </p>
+  </div>
+
+  <article>
+    <h1 class="post-title"><a href="https://averywagar.com/posts/2018/02/vim-tips-and-tricks-no.-1/">Vim Tips and Tricks No. 1</a></h1>
+
+    
+
+    <div class="post-content">
+      
+
+<p>Welcome back my fellow Vim enthusiasts! Today we will be discussing a few shortcuts you can add to your <strong>.vimrc</strong>!</p>
+
+<h2 id="find-and-replace">Find and Replace</h2>
+
+<p>Refactoring code is a large part of any programmers daily routine. Sometime you have to refactor a variable across a whole file.
+If you add the following code to your <strong>.vimrc</strong></p>
+
+<pre><code class="language-vim">&quot; Find and Replace
+map &lt;leader&gt;fr :%s///g&lt;left&gt;&lt;left&gt; &quot; Find and replace
+map &lt;leader&gt;frl :s///g&lt;left&gt;&lt;left&gt; &quot; Find and replace (current line only)
+</code></pre>
+
+<p>You can refactor code with a breeze. Just search in Vim using <code>/</code> and then hit <leader>fr to start refactoring. Then type in the new word and hit enter. Boom. Your code is refactored.
+<strong>Note:</strong> Currently there is no good way to refactor across multiple files. (Let me know in the comments if you find a way!)</p>
+
+<h1 id="clearing-searches">Clearing searches</h1>
+
+<p>Another issue I have with Vim out of the box is searching cannot be cleared easily. So instead of typing a random string into your search bar, you can clear it with the following mapping:</p>
+
+<pre><code class="language-vim">&quot; Clear searchs
+map &lt;leader&gt;&lt;space&gt; :let @/=''&lt;cr&gt; &quot; clear search
+</code></pre>
+
+<h1 id="switching-buffers">Switching buffers</h1>
+
+<p>While working across multiple files I like to use buffers. I added shortcuts to switch my buffers easily.</p>
+
+<pre><code class="language-vim">&quot; Switching Buffers
+noremap &lt;leader&gt;[ :bp&lt;return&gt;
+noremap &lt;leader&gt;] :bn&lt;return&gt;
+</code></pre>
+
+<p>Now you can page through your buffers with ease.</p>
+
+<h1 id="vim-hard-mode">Vim hard mode</h1>
+
+<p>So if you are new to Vim, or are still used to the &lsquo;Arrow keys.&rsquo; You can enable the little known hard mode in Vim.</p>
+
+<pre><code class="language-vim">&quot; No arrow keys (Vim Hard mode)
+noremap &lt;Up&gt; &lt;NOP&gt;
+noremap &lt;Down&gt; &lt;NOP&gt;
+noremap &lt;Left&gt; &lt;NOP&gt;
+noremap &lt;Right&gt; &lt;NOP&gt;
+</code></pre>
+
+<p>Now you can ascend to the Master Vimmer you are meant to be.</p>
+
+<h1 id="conclusion">Conclusion</h1>
+
+<p>So now that you have some new tools in your Vim toolbox. I hope you can extend your love for Vim. Be sure to check back soon for part 2! Let me know any other tips I should know in the comments.</p>
+
+    </div>
+  </article>
+
+  <hr />
+
+  <div class="post-info">
+    <p>
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg><span class="tag"><a href="https://averywagar.com/tags/vim">vim</a></span><span class="tag"><a href="https://averywagar.com/tags/devtools">devtools</a></span>
+    </p>
+
+    <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>320 Words</p>
+
+    <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>2018-02-02 04:35 -0800</p>
+    <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-git-commit"><circle cx="12" cy="12" r="4"></circle><line x1="1.05" y1="12" x2="7" y2="12"></line><line x1="17.01" y1="12" x2="22.96" y2="12"></line></svg><a href="https://github.com/ajmwagar/blog/commit/0799df3bde3d2ad4d5f2f6988ff1a5a952977c4c" target="_blank" rel="noopener">0799df3</a> @ 2019-04-14</p>
+  </div>
+
+  
+  <div class="pagination">
+    <div class="pagination__title">
+      <span class="pagination__title-h">Read other posts</span>
+      <hr />
+    </div>
+
+    <div class="pagination__buttons">
+      
+      <span class="button next">
+        <a href="https://averywagar.com/posts/2018/01/configuring-vim-for-java-development/">
+          <span class="button__icon">←</span>
+          <span class="button__text">Configuring Vim for Java Development</span>
+        </a>
+      </span>
+      
+
+      
+      <span class="button previous">
+        <a href="https://averywagar.com/posts/2019/04/fearless-multi-threading-parallelism-with-rust/">
+          <span class="button__text">Fearless Multi-threading &amp; Parallelism with Rust</span>
+          <span class="button__icon">→</span>
+        </a>
+      </span>
+      
+    </div>
+  </div>
+  
+
+  <div class="pagination__title">
+    <span class="pagination__title-h">comments</span>
+    <hr />
+  </div>
+  
+  <div id="comments" class="thin"><div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "averywagar" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+  
+</main>
+
+            </div>
+
+            
+                <footer class="footer">
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>&copy; 2019</span>
+            
+            <span>Avery Wagar</span>
+            <span> <a href="https://averywagar.com/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a></span>
+        </div>
+    </div>
+    <div class="footer__inner">
+        <div class="footer__content">
+
+        </div>
+    </div>
+    <div class="footer__inner">
+        <div class="footer__content">
+            
+            
+        </div>
+    </div>
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+
+
+<script type="text/javascript" src="https://averywagar.com/js/bundle.min.cf7871ed49474a80ed457154d24e61f7881adbe0f9384951a74ac46b688a39a4dbfa68bc6d37baeb058186de354ead3487d4ee7f083ea4cba860c48600b694f3.js" integrity="sha512-z3hx7UlHSoDtRXFU0k5h94ga2&#43;D5OElRp0rEa2iKOaTb&#43;mi8bTe66wWBht41Tq00h9Tufwg&#43;pMuoYMSGALaU8w=="></script>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-102498484-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+
+
+    </body>
+</html>
