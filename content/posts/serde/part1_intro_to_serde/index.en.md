@@ -2,7 +2,7 @@
 title: Intro to Data Serialization with Rust & Serde
 author: Avery Wagar
 date: 2019-08-03
-draft: false
+draft: true
 toc: false
 tags:
   - Rust
