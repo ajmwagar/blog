@@ -1,0 +1,4 @@
+This is a Brave Rewards publisher verification file.
+
+Domain: averywagar.com
+Token: 8b75cb1913383a7a4975d555cacc28a2e7afa0b7fc8c63df8f53eadff41e93b7
