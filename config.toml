@@ -75,7 +75,12 @@ url = "https://www.instagram.com/ajmwagar/"
 [[params.socialIcons]]
 icon = "fas fa-envelope"
 title = "e-mail"
-url = "mailto:ajmw.subs@gmail.com"
+url = "/contact"
+
+[[params.socialIcons]]
+icon = "fas fa-rss"
+title = "rss"
+url = "/post/index.xml"
 
 ## Menu items
 
