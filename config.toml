@@ -1,111 +1,112 @@
-baseurl = "https://averywagar.com"
-languageCode = "en-us"
-theme = "hello-friend-ng"
-
-googleAnalytics = "UA-102498484-1"
-disqusShortname = "averywagar"
-# DisqusShortname = "averywagar"
-
-buildDrafts  = false
-buildFuture  = false
-buildExpored = false
-canonifyURLs = true
-
+baseURL = "https://averywagar.com"
+languageCode = "en"
+DefaultContentLanguage = "en"
+title = "Avery Wagar | Software Engineer"
+theme = "anatole"
+summarylength = 10
+enableEmoji = true
 enableRobotsTXT = true
-enableGitInfo   = true
-enableEmoji     = true
-enableMissingTranslationPlaceholders = false
-disableRSS     = false
-disableSitemap = false
-disable404     = false
-disableHugoGeneratorInject = true
-comments = true
 
-[blackfriday]
-  hrefTargetBlank = true
+# Enable Disqus
+disqusShortname = "averywagar"
 
-[permalinks]
-  posts = "/posts/:year/:month/:title/"
+# Google Analytics
+googleAnalytics = "UA-102498484-1"
+
+# Syntax highlighting
+pygmentsUseClasses = true
+pygmentsCodeFences = true
+pygmentsCodefencesGuessSyntax = true
 
 [params]
-  dateform        = "Jan 2, 2006"
-  dateformShort   = "Jan 2"
-  dateformNum     = "2006-01-02"
-  dateformNumTime = "2006-01-02 15:04 -0700"
+title = "Avery Wagar"
+author = "Avery Wagar"
+copyright = "2003-2021"
+description = "Software Engineer"
+profilePicture = "images/Avery.jpg"
+keywords = ""
+favicon = "favicons/"
+# example ["css/custom.css"]
+customCss = []
+# example ["js/custom.js"]
+customJs = [] 
+mainSections = ["post"]
+images = ["images/site-feature-image.png"]
+doNotLoadAnimations = false
+# Form Spree Contact Form
+contactFormAction = "https://formspree.io/f/mgerwyan"
+# Google Site Verify
+#googleSiteVerify = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+# indexDateFormat = "Mon, Jan 2, 2006"
+# listDateFormat = "Jan 2"
+# singleDateFormat = "Mon, Jan 2, 2006"
+# Commento Comments
+# CommentoURL = "https://commento.example.com/js/commento.js"
+# Read More links for truncated summaries
+# readMore = true
 
-  # Metadata mostly used in document's head
-  description = "Homepage and blog by Avery Wagar"
-  keywords = "homepage, blog, science, informatics, development, programming, coding, vr"
-  images = [""]
-  comments = true
 
-  homeSubtitle = "Software Developer"
+[params.simpleAnalytics]
+# enable = true
+# customurl = "https://analytics.example.com"
 
-  # Directory name of your blog content (default is `content/posts`)
-  contentTypeName = "posts"
-  # Default theme "light" or "dark"
-  defaultTheme = "dark"
+## Math settings
+[params.math]
+enable = false  # options: true, false. Enable math support globally, default: false. You can always enable math on per page.
+use = "katex"  # options: "katex", "mathjax". default is "katex".
 
-  # Prefix of link to the git commit detail page. GitInfo must be enabled.
-  gitUrl = "https://github.com/ajmwagar/blog/commit/"
+## Social links
+# use 'fab' when brand icons, use 'fas' when standard solid icons.
+[[params.socialIcons]]
+icon = "fab fa-linkedin"
+title = "Linkedin"
+url = "https://www.linkedin.com/in/ajmwagar/"
 
-# Social icons
-  [[params.social]]
-    name = "twitter"
-    url  = "https://twitter.com/ajmwagar/"
+[[params.socialIcons]]
+icon = "fab fa-github"
+title = "GitHub"
+url = "https://github.com/ajmwagar"
 
-  [[params.social]]
-    name = "email"
-    url  = "mailto:averywagar.com@gmail.com"
-  [[params.social]]
-    name = "github"
-    url  = "https://github.com/ajmwagar/"
+[[params.socialIcons]]
+icon = "fab fa-instagram"
+title = "instagram"
+url = "https://www.instagram.com/ajmwagar/"
 
-  [[params.social]]
-    name = "linkedin"
-    url  = "https://www.linkedin.com/in/ajmwagar/"
+[[params.socialIcons]]
+icon = "fas fa-envelope"
+title = "e-mail"
+url = "mailto:ajmw.subs@gmail.com"
 
-[languages]
-  [languages.en]
-    title = "Avery Wagar"
-    subtitle = "Software Developer"
-    keywords = ""
-    copyright = "Avery Wagar"
-    readOtherPosts = "Read other posts"
+## Menu items
 
-    [languages.en.params.logo]
-      logoText = "cd /home/ajmwagar"
-      logoHomeLink = "/"
-    # or
-    #
-    # path = "/img/your-example-logo.svg"
-    # alt = "Your example logo alt text"
-
-	# You can create a language based menu
-    # [languages.en.menu]
-    #   [[languages.en.menu.main]]
-    #     identifier = "about"
-    #     name = "About"
-    #     url = "/about"
-    #   [[languages.en.menu.main]]
-    #     identifier = "showcase"
-    #     name = "Showcase"
-    #     url = "/showcase"
-[taxonomies]
-  tag      = "tags"
-  category = ""
-
-# And you can even create generic menu
 [menu]
+
   [[menu.main]]
-    identifier = "about"
-    name       = "About"
-    url        = "/about"
+  name = "Home"
+  identifier = "home"
+  weight = 100
+  url = "/"
+
   [[menu.main]]
-    identifier = "blog"
-    name       = "Blog"
-    url        = "/posts"
+  name = "Posts"
+  weight = 200
+  identifier = "posts"
+  url = "/post/"
+
   [[menu.main]]
-    identifier = "work"
-    name       = "Work"
-    url        = "/work"
+  name = "About"
+  weight = 300
+  identifier = "about"
+  url = "/about/"
+
+  [[menu.main]]
+  name = "Work"
+  weight = 300
+  identifier = "work"
+  url = "/work/"
+
+  [[menu.main]]
+  name = "Contact"
+  weight = 400
+  identifier = "contact"
+  url = "/contact/"
