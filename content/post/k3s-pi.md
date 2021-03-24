@@ -2,7 +2,7 @@
 title: Building a k3s cluster with Raspberry Pi 4s
 author: Avery Wagar
 date: 2021-03-23
-draft: true
+draft: false
 toc: false
 tags:
   - K8s
@@ -16,6 +16,8 @@ tags:
 I've been interested in learning Kubernetes for a while now. However, my biggest issue has been getting a reliable and realistic cluster built. I've had too many issues with [k3d.io](https://k3d.io), [Minikube](https://minikube.sigs.k8s.io/docs/), and [Microk8s](https://microk8s.io/). Plus, running a virtualized k8s cluster doesn't give me the benefits of actually having a cluster up 24/7.
 
 I decided to build my cluster using [k3s](https://k3s.io) and a few [Raspberry Pi 4s](https://www.raspberrypi.org/products/raspberry-pi-4-model-b/).
+
+{{< figure src="/img/rpi-k3s/final-cluster.jpg" alt="FinalCluster">}}
 
 
 ## Materials
@@ -75,7 +77,7 @@ The PoE hats come with standoffs you can install, but if you bought the cluster 
 
 > The PoE hat flush against the pins.
 
-In terms of putting the hats on the Pis, they need to be nice and flush on the GPiO pins. It takes a bit of force to get them on, so make sure you're applying it evenly across the pins.  See the image below for reference.
+In terms of putting the hats on the Pis, they need to be nice and flush on the GPiO pins. It takes a bit of force to get them on, so make sure you're applying it evenly across the pins. See the image above for reference.
 
 
 ## Powering it up.
@@ -272,3 +274,6 @@ That covers almost everything.
 You should now have a fully-fledged k3s-cluster ready to go.
 
 I'll continue this series soon, I plan on showing how to use [Flux's operator](https://fluxcd.io/) to set up GitOps along with using Rust + Docker to automatically do multi-platform builds so you can deploy pods on any architecture, mixed or otherwise.
+
+{{< figure src="/img/rpi-k3s/port-side.jpg" alt="FinalCluster">}}
+{{< figure src="/img/rpi-k3s/front.jpg" alt="FinalCluster">}}
