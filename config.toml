@@ -1,117 +1,76 @@
-baseURL = "https://averywagar.com"
-languageCode = "en"
 DefaultContentLanguage = "en"
-title = "Avery Wagar | Software Engineer"
-theme = "anatole"
-summarylength = 10
+baseURL = "https://averywagar.com"
+disqusShortname = "averywagar"
 enableEmoji = true
 enableRobotsTXT = true
-
-# Enable Disqus
-disqusShortname = "averywagar"
-
-# Google Analytics
 googleAnalytics = "UA-102498484-1"
-
-# Syntax highlighting
-pygmentsUseClasses = true
+languageCode = "en"
 pygmentsCodeFences = true
 pygmentsCodefencesGuessSyntax = true
-
+pygmentsUseClasses = true
+summarylength = 10
+theme = "anatole"
+title = "Avery Wagar | Software Engineer"
+[[menu.main]]
+identifier = "home"
+name = "Home"
+url = "/"
+weight = 100
+[[menu.main]]
+identifier = "posts"
+name = "Posts"
+url = "/post/"
+weight = 200
+[[menu.main]]
+identifier = "about"
+name = "About"
+url = "/about/"
+weight = 300
+[[menu.main]]
+identifier = "work"
+name = "Work"
+url = "/work/"
+weight = 300
+[[menu.main]]
+identifier = "contact"
+name = "Contact"
+url = "/contact/"
+weight = 400
 [params]
-title = "Avery Wagar"
 author = "Avery Wagar"
-copyright = "2003-2021"
-description = "Software Engineer"
-profilePicture = "img/Avery.jpg"
-keywords = ""
-favicon = "favicons/"
-# example ["css/custom.css"]
-customCss = []
-# example ["js/custom.js"]
-customJs = [] 
-mainSections = ["post"]
-images = ["img/site-feature-image.png"]
-doNotLoadAnimations = false
-# Form Spree Contact Form
 contactFormAction = "https://formspree.io/f/mgerwyan"
-# Google Site Verify
-#googleSiteVerify = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
-# indexDateFormat = "Mon, Jan 2, 2006"
-# listDateFormat = "Jan 2"
-# singleDateFormat = "Mon, Jan 2, 2006"
-# Commento Comments
-# CommentoURL = "https://commento.example.com/js/commento.js"
-# Read More links for truncated summaries
-# readMore = true
-
-
-[params.simpleAnalytics]
-# enable = true
-# customurl = "https://analytics.example.com"
-
-## Math settings
+copyright = "2003-2021"
+customCss = []
+customJs = []
+description = "Software Engineer"
+doNotLoadAnimations = false
+favicon = "favicons/"
+images = ["img/site-feature-image.png"]
+keywords = ""
+mainSections = ["post"]
+profilePicture = "img/photo_2021-07-27_17-32-01.jpg"
+title = "Avery Wagar"
 [params.math]
-enable = false  # options: true, false. Enable math support globally, default: false. You can always enable math on per page.
-use = "katex"  # options: "katex", "mathjax". default is "katex".
-
-## Social links
-# use 'fab' when brand icons, use 'fas' when standard solid icons.
+enable = false
+use = "katex"
+[params.simpleAnalytics]
 [[params.socialIcons]]
 icon = "fab fa-linkedin"
 title = "Linkedin"
 url = "https://www.linkedin.com/in/ajmwagar/"
-
 [[params.socialIcons]]
 icon = "fab fa-github"
 title = "GitHub"
 url = "https://github.com/ajmwagar"
-
 [[params.socialIcons]]
 icon = "fab fa-instagram"
 title = "instagram"
 url = "https://www.instagram.com/ajmwagar/"
-
 [[params.socialIcons]]
 icon = "fas fa-envelope"
 title = "e-mail"
 url = "/contact"
-
 [[params.socialIcons]]
 icon = "fas fa-rss"
 title = "rss"
 url = "/post/index.xml"
-
-## Menu items
-
-[menu]
-
-  [[menu.main]]
-  name = "Home"
-  identifier = "home"
-  weight = 100
-  url = "/"
-
-  [[menu.main]]
-  name = "Posts"
-  weight = 200
-  identifier = "posts"
-  url = "/post/"
-
-  [[menu.main]]
-  name = "About"
-  weight = 300
-  identifier = "about"
-  url = "/about/"
-
-  [[menu.main]]
-  name = "Work"
-  weight = 300
-  identifier = "work"
-  url = "/work/"
-
-  [[menu.main]]
-  name = "Contact"
-  weight = 400
-  identifier = "contact"
-  url = "/contact/"
