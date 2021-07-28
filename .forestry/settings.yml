@@ -14,6 +14,10 @@ sections:
   label: Pages
   create: all
   match: "*"
+- type: document
+  path: config.toml
+  label: config.toml
+  match: "**/*"
 upload_dir: static/img
 public_path: "/img"
 front_matter_path: ''
