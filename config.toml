@@ -23,7 +23,7 @@ title = "Avery Wagar"
 author = "Avery Wagar"
 copyright = "2003-2021"
 description = "Software Engineer"
-profilePicture = "images/Avery.jpg"
+profilePicture = "img/Avery.jpg"
 keywords = ""
 favicon = "favicons/"
 # example ["css/custom.css"]
@@ -31,7 +31,7 @@ customCss = []
 # example ["js/custom.js"]
 customJs = [] 
 mainSections = ["post"]
-images = ["images/site-feature-image.png"]
+images = ["img/site-feature-image.png"]
 doNotLoadAnimations = false
 # Form Spree Contact Form
 contactFormAction = "https://formspree.io/f/mgerwyan"
