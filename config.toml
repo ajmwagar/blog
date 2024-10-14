@@ -48,7 +48,7 @@ favicon = "favicons/"
 images = ["img/site-feature-image.png"]
 keywords = ""
 mainSections = ["post"]
-profilePicture = "img/photo_2021-07-27_17-32-01.jpg"
+profilePicture = "img/IMG_5231.png"
 title = "Avery Wagar"
 [params.math]
 enable = false

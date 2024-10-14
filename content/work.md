@@ -4,23 +4,41 @@ date: 2019-02-02T11:34:00.000+01:00
 author: Avery Wagar
 
 ---
-## Professional Work
+## Work Experience
 
-### Amazon Web Services (AWS)
+### Systems Development Engineer / Amazon Web Services (AWS)  
+_August 2021 — Present_
 
-**Systems Development Engineer August 2021 - Present**
+- Designed and launched a new API that streamlined customer workflows, resulting in faster task execution and improved system monitoring.
+- Automated the remediation of FSTAB configuration issues across 29,000 servers, preventing a potential system-wide outage and saving over 400 hours of manual intervention.
+- Developed and deployed automated pipelines, reducing deployment time by 50%, ensuring system scalability and security across global regions.
+- Reduced testing time by 80% for S3 stress tests, accelerating hardware adoption and improving system performance for long-term projects.
+- Mentored two interns through complex development projects, resulting in full-time offers and increased team productivity.
 
-### Zipwhip
+### Software Engineer / Zipwhip  
+_April 2020 — August 2021_
 
-**Software Engineer Feb 2021 - August 2021**
+- Built prototypes for business development, including SMS translation and lead generation chatbots.
+- Developed a custom solution for a $40k MRR client, delivering functionality from design to production in under 3 weeks.
+- Deployed a next-gen Text-Santa chatbot, driving a 500% increase in conversations year-over-year.
+- Led the winning team at Zipwhip's Internal Engineering Hackathon; the project was later productionized.
+- Optimized the phone number porting process for Bandwidth.com, reducing ticket processing time by over 95%.
 
-**IT Systems Programmer Apr 2020 - Feb 2021**
+### Software Development Intern / Zipwhip  
+_August 2019 — April 2020_
 
-Working closely with senior leadership, built prototypes to explore business development opportunities, including SMS translation and lead generation chatbots. Built custom solutions for high-value clients and deployed a next-generation Text-Santa chatbot, driving a 500% increase in engagement to date.
+- Built and text-enabled the Textpresso V4 robot, a robotic barista that takes orders via SMS.
 
-**Software Development Intern Aug 2019 - Apr 2020**
+### Software Development Intern / Committee for Children  
+_July 2019 — January 2020_
 
-[Built and text-enabled the Textpresso V4 robot](https://www.geekwire.com/2020/avery-wagar-re-submission/), explored a potential plug-in model for the Zipwhip Platform, and built numerous innovative prototypes.
+- Supported the tech enablement of a 40-year-old nonprofit with a mission to transform the social-emotional well-being of 100 million children annually by 2028.
+
+### Instructor, Virtual Reality Development / ChickTech Seattle  
+_2017 — 2019_
+
+- Taught VR development (Unity3D, C#) to underrepresented high school girls at the annual High School Kickoff Weekend.
+
 
 ***
 
@@ -38,7 +56,7 @@ See my [Github Profile](https://github.com/ajmwagar) for more projects.
 
 #### Outrigger
 
-**Co-Founder and Lead Developer Sept 2017 - present**
+**Co-Founder and Lead Developer 2017 - 2021**
 
 We designed and built Outrigger to help people, including ourselves, achieve inbox life balance by creating some space to focus on whatever’s important.
 
