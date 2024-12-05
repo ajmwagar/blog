@@ -43,7 +43,7 @@ Let's go back to the engine metaphor. An internal-combustion engine is a rather 
 
 That's it. 4-stroke engine. Obviously, we're leaving out cooling, and lubrication in our model, but for simplicities sake, that's okay.
 
-When we talk about systems design in software. We often are trying to maximize the "throughput", or efficacy of resources (storage/compute/memory).
+When we talk about systems design in software. We often are trying to maximize the "throughput", or the efficient use of resources (storage/compute/memory).
 
 Engines make power at the cost of fuel. Let's talk about the bottlenecks of this system. I already hinted at one, when we talk about a NA engine versus a turbo/super-charged one.
 
