@@ -237,4 +237,4 @@ I haven't touched on true "distributed systems" or "fault tolerance" or "network
 
 > Software is just Systems and Systems make up the world.
 
-So the next time you hear about some magically algorithm or AI, just remember that at the end of the day, it's just some system someone came up with... that can likely be explained to you in plain english (that is, if more software engineer types had the soft skills to explain it to you...).
+So the next time you hear about some magical algorithm or AI, just remember that at the end of the day, it's just some system someone came up with... that can likely be explained to you in plain english (that is, if more software engineer types had the soft skills to explain it to you...).
