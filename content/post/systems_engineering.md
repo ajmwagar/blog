@@ -207,7 +207,7 @@ Checkout.
 Leave Store.
 ```
 
-Now please bare with the Psuedo code here...
+Now please bear with the Psuedo code here...
 
 This approach has three stages each with their own time complexity.
 
@@ -231,7 +231,7 @@ I haven't touched on true "distributed systems" or "fault tolerance" or "network
 
 "Networking" is just a computer version of having a conversation, where you ask questions, or assign someone a grocery list to go find.
 
-"Fault Tolerance" is just having to make a substituion for an item thats out at the store. Or having that person come back and say they couldn't find anything, and then making due from there.
+"Fault Tolerance" is just having to make a substitution for an item thats out at the store. Or having that person come back and say they couldn't find anything, and then making due from there.
 
 "Distributed Systems" is just taking this approach, and having multiple shoppers goto different stores.
 

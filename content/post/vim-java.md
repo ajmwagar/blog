@@ -45,7 +45,8 @@ developers use autocompleting to be faster at what we do!
 > __Note__: this plugin only works on [NeoVim](https://neovim.io). Or with Vim 8
 > and python support installed
 
-![deoplete JavaScript](https://camo.githubusercontent.com/cfdefba43971bd44d466ead357bb296e38d7f88c/68747470733a2f2f6d656469612e67697068792e636f6d2f6d656469612f6c344b6930316d30314939424f485745302f67697068792e676966)
+<!-- ![deoplete JavaScript](/img/deoplete.gif) -->
+{{< figure src="/img/deoplete.gif" alt="deoplete" position="center" style="width:800px;">}}
 
 
 ### Installation
@@ -133,7 +134,8 @@ You can use ale for other languages than just Java, it has a long list of
 support including python. C#, C++, Lua, Haskell, JavaScript (yes including node.js), a full list is available [here](https://github.com/w0rp/ale#supported-languages)
 
 
-![ale gif](https://github.com/w0rp/ale/blob/master/img/example.gif?raw=true)
+<!-- ![ale gif](/img/ale.gif) -->
+{{< figure src="/img/ale.gif" alt="ale" position="center" style="width:800px;">}}
 
 ### Installation
 So in order to magically fix all your code... add the following to your `.vimrc`
@@ -182,7 +184,8 @@ For those of you who don't know what a snippet is: [Wikipedia - Snippet](https:/
 
 > __Note__: This one takes a bit longer to set up. But can be extremely rewarding.
 
-![Ultisnips Gif](https://camo.githubusercontent.com/296aecf30e1607233814196db6bd3f5f47e70c73/68747470733a2f2f7261772e6769746875622e636f6d2f5369725665722f756c7469736e6970732f6d61737465722f646f632f64656d6f2e676966)
+<!-- ![Ultisnips Gif](/img/ultisnips.gif) -->
+{{< figure src="/img/ultisnips.gif" alt="ultisnips" position="center" style="width:800px;">}}
 
 
 ### Installation
@@ -297,7 +300,8 @@ This allows me to type `sout` and get `System.out.println();`, or `br` turns to 
 Another tool I like using is TagBar a tool that shows you the methods variables
 and more in a buffer to the right of your file
 
-![tagbar](https://camo.githubusercontent.com/f5065c1dda4cbd6df6eed89c4086e31fc1774b2e/68747470733a2f2f692e696d6775722e636f6d2f6e3462705076332e706e67)
+<!-- ![tagbar](/img/tagbar.png) -->
+{{< figure src="/img/tagbar.png" alt="tagbar" position="center" style="width:800px;">}}
 
 ### Installation
 You can install TagBar by adding the following to your `.vimrc`
@@ -321,7 +325,8 @@ Now you can use Ctrl-b to open Tagbar.
 
 Ctrlp is a great fuzzy finder which can be configured to use faster tools than grep.  It can search buffers, files, and more!
 
-![ctrlp](https://camo.githubusercontent.com/0a0b4c0d24a44d381cbad420ecb285abc2aaa4cb/687474703a2f2f692e696d6775722e636f6d2f7949796e722e706e67)
+<!-- ![ctrlp](/img/ctrlp.png) -->
+{{< figure src="/img/ctrlp.png" alt="ctrlp" position="center" style="width:800px;">}}
 
 
 ### Installation
@@ -351,7 +356,8 @@ NERD TREE is an advance netrw replacement for Vim, I am not saying that there
 is anything wrong with netrw. However, I do think many would agree with me when
 I say that NERD TREE is more _user freindly_. 
 
-![nerdtree](https://github.com/scrooloose/nerdtree/raw/master/screenshot.png?Raw=true)
+<!-- ![nerdtree](/img/nerdtree.png) -->
+{{< figure src="/img/nerdtree.png" alt="nerdtree" position="center" style="width:800px;">}}
 
 Some things you can do with NERD TREE includes:
 
