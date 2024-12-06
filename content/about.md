@@ -1,12 +1,24 @@
 ---
 title: About
-date: 2024-10-13T02:42:30.000+01:00
+date: 2024-12-6T00:00:00.000+00:00
 author: Avery Wagar
 
 ---
 
-Software Engineer with expertise in cloud-native technologies, including Kubernetes, Docker, and distributed systems design. Proficient in Rust, Python, Java, TypeScript, and C++, with experience across embedded systems, networking, and machine learning.
+Born and raised Seattlite. I write blog posts sometimes, which is probably why you are here.
 
-At Amazon Web Services (AWS), developed systems and APIs that streamlined customer workflows, improved operational efficiency, and reduced deployment times. Successfully mentored junior engineers and contributed to large-scale system performance enhancements across global regions. Previous experience at Zipwhip includes creating innovative solutions like SMS translation and lead generation chatbots, as well as delivering custom functionality for high-revenue clients.
+Passionate about sailing, fishing, motorcycles, motorsports, camping, the works.
 
-Active participant in hackathons, leveraging creativity and technical expertise to build forward-thinking solutions.
+Collector of Vinyl records, esoteric transportation options, and bad jokes.
+
+Professionally, I work in techonology. Mostly software, sometimes hardware. **Read more about my work [here](/about).**
+
+---
+
+In the summers, you can find me on Lake Union racing in [Duck Dodge](http://www.duckdodge.org/) on my 1968 Coronado 25, Theseus. Big, blue, and slow, but always a good time.
+
+If I'm not there, I'm probably motorcycle camping or sailing in the San Juan Islands.
+
+Wintertime, I snowboard, mostly Snoqualmie, and pretend it's gonna get sunny soon, or some winters I'll [build a boat](/posts/ariadne) instead.
+
+Feel free to drop me a note [here](/contact) or follow me on social media (links to your left), but I'm not super responsive anymore on those platforms.
