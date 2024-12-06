@@ -349,7 +349,7 @@ It was a rewarding project, I'd never built a boat before, and having it invade 
 
 {{< figure src="/img/ariadne/me.png" alt="Me." position="center" style="width:800px;">}}
 
-> Me aboard Ariande, checking a crap pot in West Sound, Orcas Island.
+> Me aboard Ariande, checking a crab pot in West Sound, Orcas Island.
 
 ## Bonus: Dinghy Pictures from the San Juan Islands.
 

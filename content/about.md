@@ -11,7 +11,7 @@ Passionate about sailing, fishing, motorcycles, motorsports, camping, the works.
 
 Collector of Vinyl records, esoteric transportation options, and bad jokes.
 
-Professionally, I work in techonology. Mostly software, sometimes hardware. **Read more about my work [here](/about).**
+Professionally, I work in techonology. Mostly software, sometimes hardware. **Read more about my work [here](/work).**
 
 ---
 
@@ -19,6 +19,6 @@ In the summers, you can find me on Lake Union racing in [Duck Dodge](http://www.
 
 If I'm not there, I'm probably motorcycle camping or sailing in the San Juan Islands.
 
-Wintertime, I snowboard, mostly Snoqualmie, and pretend it's gonna get sunny soon, or some winters I'll [build a boat](/posts/ariadne) instead.
+Wintertime, I snowboard, mostly Snoqualmie, and pretend it's gonna get sunny soon, or some winters I'll [build a boat](/post/ariadne) instead.
 
 Feel free to drop me a note [here](/contact) or follow me on social media (links to your left), but I'm not super responsive anymore on those platforms.
