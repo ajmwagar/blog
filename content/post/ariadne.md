@@ -267,7 +267,7 @@ I had worked with Prism Graphics in Seattle to do the vinyl lettering on Theseus
 
 {{< figure src="/img/ariadne/theseus.png" alt="Theseus in her slip." position="center" style="width:800px;">}}
 
-I was thrilled with how it turned out. Happy to be a repeat customer, I wanted them to match the font for Ariande.
+I was thrilled with how it turned out. Happy to be a repeat customer, I wanted them to match the font for Ariadne.
 
 {{< figure src="/img/ariadne/ivars.png" alt="Theseus at Ivars." position="center" style="width:800px;">}}
 
@@ -349,7 +349,7 @@ It was a rewarding project, I'd never built a boat before, and having it invade 
 
 {{< figure src="/img/ariadne/me.png" alt="Me." position="center" style="width:800px;">}}
 
-> Me aboard Ariande, checking a crab pot in West Sound, Orcas Island.
+> Me aboard Ariadne, checking a crab pot in West Sound, Orcas Island.
 
 ## Bonus: Dinghy Pictures from the San Juan Islands.
 
