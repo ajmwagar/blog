@@ -10,7 +10,7 @@ pygmentsCodefencesGuessSyntax = true
 pygmentsUseClasses = true
 summarylength = 10
 theme = "anatole"
-title = "Avery Wagar | Software Engineer"
+title = "Software Engineer"
 [[menu.main]]
 identifier = "home"
 name = "Home"
