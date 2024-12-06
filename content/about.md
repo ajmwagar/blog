@@ -11,7 +11,7 @@ Born and raised Seattleite. I write blog posts and code, one of which is probabl
 
 Passionate about sailing, fishing, motorcycles, motorsports, camping, the works.
 
-Collector of Vinyl records, esoteric transportation options, and bad jokes.
+Collector of vinyl records, esoteric transportation options, and bad jokes.
 
 Professionally, I work in techonology. Mostly software, sometimes hardware. **Read more about my work [here](/work).**
 

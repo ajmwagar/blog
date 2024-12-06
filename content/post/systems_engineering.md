@@ -34,7 +34,7 @@ I want to take step back, and talk about software at scale. Because at the end o
 
 ## Where to start?
 
-Let's go back to the engine metaphor. An internal-combustion engine is a rather simple concept. "Suck, Squeeze, Bang, Blow!" - can some up the four states a cylinder goes through to make power.
+Let's go back to the engine metaphor. An internal-combustion engine is a rather simple concept. "Suck, Squeeze, Bang, Blow!" - can sum up the four states a cylinder goes through to make power.
 
 1. *Suck* - Air comes in through the intake valve. Either naturally aspirated, or forced induction (turbo, supercharger, things that go stu-stu-stu-stu).
 2. *Squeeze* - A fuel injector, sprays fuel into the air mixture. Shortly after, the piston starts an upstroke, compressing the air fuel mixture.
@@ -231,10 +231,14 @@ I haven't touched on true "distributed systems" or "fault tolerance" or "network
 
 "Networking" is just a computer version of having a conversation, where you ask questions, or assign someone a grocery list to go find.
 
-"Fault Tolerance" is just having to make a substitution for an item thats out at the store. Or having that person come back and say they couldn't find anything, and then making due from there.
+"Fault Tolerance" is just having to make a substitution for an item that is out at the store. Or having that person come back and say they couldn't find anything, and then making due from there.
 
 "Distributed Systems" is just taking this approach, and having multiple shoppers goto different stores.
 
 > Software is just Systems and Systems make up the world.
 
 So the next time you hear about some magical algorithm or AI, just remember that at the end of the day, it's just some system someone came up with... that can likely be explained to you in plain english (that is, if more software engineer types had the soft skills to explain it to you...).
+
+Even better, once you start thinking in systems you can't stop. I remember a long time ago I heard a cybersecurity professional tell me that once you start thinking about how to exploit a system regularly, you'll find yourself doing it non-stop. 
+
+I find it's similar if you just simply ask "how does that work?" about your surroundings, or the apps on your phone. When you to see the world as logical, discrete systems, the world becomes small, and the chaos quells.
