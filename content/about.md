@@ -7,7 +7,9 @@ author: Avery Wagar
 
 {{< figure src="/img/about/me.png" alt="Me, in Victoria B.C." position="center" style="width:800px;">}}
 
-Born and raised Seattleite. I write blog posts and code, one of which is probably why you are here.
+Born and raised Seattleite. I write blog posts and code, one of which may be why you are here.
+
+Welcome.
 
 Passionate about sailing, fishing, motorcycles, motorsports, camping, the works.
 
