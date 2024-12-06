@@ -241,4 +241,4 @@ So the next time you hear about some magical algorithm or AI, just remember that
 
 Even better, once you start thinking in systems you can't stop. I remember a long time ago I heard a cybersecurity professional tell me that once you start thinking about how to exploit a system regularly, you'll find yourself doing it non-stop. 
 
-I find it's similar if you just simply ask "how does that work?" about your surroundings, or the apps on your phone. When you to see the world as logical, discrete systems, the world becomes small, and the chaos quells.
+I find it's similar if you just simply ask "how does that work?" about your surroundings, or the apps on your phone. When you start to see the world as logical, discrete systems, the world becomes small, and the chaos quells.
