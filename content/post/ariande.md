@@ -1,7 +1,7 @@
 ---
 title: Ariande - Building a Dinghy in my kitchen
 date: 2024-12-06T00:00:00+00:00
-draft: true
+draft: false
 toc: false
 tags:
   - cruising
