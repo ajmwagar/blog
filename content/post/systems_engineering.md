@@ -22,9 +22,9 @@ While discussing the recent jump in Bitcoin prices since election night, a frien
 
 And he did. With almost a decade of experience on me, he had worked on many many projects, some of which I would dream to be able to work on, but don't have an aeronautical background.
 
-It got me thinking, people approach technology, specifically software, as this out of reach, mysterious, almost magically concept. But the same people who are perplexed, or bewildered by software, many a time, have the problem solving, and systems skills to truly understand and appreciate software.
+It got me thinking, people approach technology, specifically software, as this out of reach, mysterious, almost magical concept. But the same people who are perplexed, or bewildered by software, many a time, have the problem solving, and systems skills to truly understand and appreciate software.
 
-I know many mechanically inclined people. I've been on race teams where we've taken apart engines in the pits, and put them back together before the green flag the next morning. These same people often remark how magically software seems.
+I know many mechanically inclined people. I've been on race teams where we've taken apart engines in the pits, and put them back together before the green flag the next morning. These same people often remark how magical software seems.
 
 Funnily enough, many of the software engineers I know, struggle greatly with Systems Design. They can do Leetcode hard problems with their eyes closed all day long, but systems design seems to send them in a loop rather quickly.
 
