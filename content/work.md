@@ -7,15 +7,20 @@ author: Avery Wagar
 
 Software Engineer with expertise in cloud-native technologies, including Kubernetes, Docker, and distributed systems design. Proficient in Rust, Python, Java, TypeScript, and C++, with experience across embedded systems, networking, and machine learning.
 
-At Amazon Web Services (AWS), developed systems and APIs that streamlined customer workflows, improved operational efficiency, and reduced deployment times. Successfully mentored junior engineers and contributed to large-scale system performance enhancements across global regions. Previous experience at Zipwhip includes creating innovative solutions like SMS translation and lead generation chatbots, as well as delivering custom functionality for high-revenue clients.
+Currently supporting Oracle's National Security Regions.
+
+Ex-Amazon Web Services (AWS). There I developed systems and APIs that streamlined customer workflows, improved operational efficiency, and reduced deployment times. Successfully mentored junior engineers and contributed to large-scale system performance enhancements across global regions. Previous experience at Zipwhip includes creating innovative solutions like SMS translation and lead generation chatbots, as well as delivering custom functionality for high-revenue clients.
 
 Active participant in hackathons, leveraging creativity and technical expertise to build forward-thinking solutions.
 
 
 ## Work Experience
 
+### Contractor / Oracle National Security Regions
+_January 2025 - Present_
+
 ### Systems Development Engineer / Amazon Web Services (AWS)  
-_August 2021 — Present_
+_August 2021 — January 2025_
 
 - Designed and launched a new API that streamlined customer workflows, resulting in faster task execution and improved system monitoring.
 - Automated the remediation of FSTAB configuration issues across 29,000 servers, preventing a potential system-wide outage and saving over 400 hours of manual intervention.
