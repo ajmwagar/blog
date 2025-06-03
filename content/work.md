@@ -1,6 +1,6 @@
 ---
 title: Work
-date: 2024-12-06T00:00:00.000+00:00
+date: 2025-06-02T00:00:00.000+00:00
 author: Avery Wagar
 
 ---
@@ -16,8 +16,17 @@ Active participant in hackathons, leveraging creativity and technical expertise 
 
 ## Work Experience
 
+### Senior Site Reliability Developer / Oracle National Security Regions
+_July 2025 - Present_
+
 ### Contractor / Oracle National Security Regions
-_January 2025 - Present_
+_January 2025 - July 2025_
+
+- Designed, deployed, and maintained fleet management and monitoring systems.
+- Managed operations for 500 air-gapped workstations, and 30 servers across three geographic locations and six distinct spaces.
+- Responsible for managing access control for over 300 employees. Including 2FA, email, and other services.
+- Responsible for FedRAMP patching and DISA STIG compliance across many products.
+- Practiced DevOps and TDD using OCI DevOps and SCM.
 
 ### Systems Development Engineer / Amazon Web Services (AWS)  
 _August 2021 — January 2025_
@@ -66,6 +75,14 @@ See my [LinkedIn](https://www.linkedin.com/in/ajmwagar/) for more.
 See my [Github Profile](https://github.com/ajmwagar) for more projects.
 
 ## Personal Projects
+
+#### Future Present Labs (FPL)
+
+**Founder and CEO 2025 - Present**
+
+Software & Mechatronics Consultants and Contract Manufacturer. Based in Seattle, WA.
+
+[Learn more](https://fpl.dev)
 
 #### Outrigger
 
