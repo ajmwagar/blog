@@ -39,7 +39,7 @@ weight = 400
 [params]
 author = "Avery Wagar"
 contactFormAction = "https://formspree.io/f/mgerwyan"
-copyright = "2003-2024"
+copyright = "2003-2025"
 customCss = []
 customJs = []
 description = "Software Engineer"
