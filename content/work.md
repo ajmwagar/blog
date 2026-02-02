@@ -16,8 +16,18 @@ Active participant in hackathons, leveraging creativity and technical expertise 
 
 ## Work Experience
 
+### Founder & CEO / Future Present Labs (FPL)
+_December 2025 - Present_
+
+Building the infrastructure for the agentic era. FPL is a software consultancy and contract manufacturer bridging AI agents and physical fabrication.
+
+- **AgentRFQ** — Created and open-sourced the standard for agent-to-manufacturer RFQs (github.com/FuturePresentLabs/AgentRFQ)
+- **Agentic Manufacturing** — Operating 3D printing, waterjet, and CNC workflows for robotics startups and AI companies
+- **Agent R&D** — Building AI agents that design, quote, and fulfill physical parts with human-in-the-loop approval
+- Based in Seattle, serving clients from YC startups to established hardware companies
+
 ### Senior Site Reliability Developer / Oracle National Security Regions
-_July 2025 - Present_
+_July 2025 - November 2025_
 
 ### Contractor / Oracle National Security Regions
 _January 2025 - July 2025_
