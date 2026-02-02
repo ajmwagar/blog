@@ -7,7 +7,7 @@ author: Avery Wagar
 
 {{< figure src="/img/about/me.png" alt="Me, in Victoria B.C." position="center" style="width:800px;">}}
 
-Founder of [Future Present Labs](https://fpl.dev). Building the infrastructure for agentic manufacturing — where AI agents design, quote, and fabricate real hardware.
+Systems → Atoms at [Future Present Labs](https://fpl.dev). Building the infrastructure for agentic manufacturing — where AI agents design, quote, and fabricate real hardware.
 
 Previously: Senior SRE at Oracle National Security Regions, Systems Development Engineer at AWS, startup engineer at Zipwhip.
 

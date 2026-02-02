@@ -16,7 +16,7 @@ Active participant in hackathons, leveraging creativity and technical expertise 
 
 ## Work Experience
 
-### Founder & CEO / Future Present Labs (FPL)
+### Systems → Atoms / Future Present Labs (FPL)
 _December 2025 - Present_
 
 Building the infrastructure for the agentic era. FPL is a software consultancy and contract manufacturer bridging AI agents and physical fabrication.
