@@ -1,7 +1,7 @@
 ---
 title: Is your mission critical?
 date: 2025-03-04T00:00:00+00:00
-draft: false
+draft: true
 toc: false
 tags:
   - systems-engineering
