@@ -10,7 +10,7 @@ pygmentsCodefencesGuessSyntax = true
 pygmentsUseClasses = true
 summarylength = 10
 theme = "anatole"
-title = "Software Engineer"
+title = "Turning Systems → Atoms"
 [[menu.main]]
 identifier = "home"
 name = "Home"
@@ -42,7 +42,7 @@ contactFormAction = "https://formspree.io/f/mgerwyan"
 copyright = "2003-2025"
 customCss = []
 customJs = []
-description = "Software Engineer"
+description = "Turning Systems → Atoms"
 doNotLoadAnimations = false
 favicon = "favicons/"
 images = ["img/site-feature-image.png"]
