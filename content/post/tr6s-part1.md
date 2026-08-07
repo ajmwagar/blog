@@ -14,7 +14,7 @@ tags:
 
 {{< figure src="/img/tr6s_train.jpg" alt="TR-6S powered on on Amtrak Acela, Macbook Neo with Ghidra open, Stella Artois Beer in background" position="center" style="width:800px;">}}
 
-I took a trip in August 2026 to Washington, D.C. - I was stubborn enough to pack my smaller modular right onto the airplane with me. However, I felt I was sorely missing drums in my patches.
+I took a trip in August 2026 to Washington, D.C. - I was stubborn enough to pack my smaller modular rig onto the airplane with me. However, I felt I was sorely missing drums in my patches.
 
 I ended up visiting [Chuck Levin's Washington Music Center](https://chucklevins.com), mostly because they seemingly had a decent modular section, or at least I was told so. Unfortunately it was mostly used modules outside of a few Intellijel utilities. They also didn't have enough long patch cables to get a viable patch going with their offerings. 
 
