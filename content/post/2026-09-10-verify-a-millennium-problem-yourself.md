@@ -2,7 +2,7 @@
 title: "Verify a Millennium Prize Problem Yourself (in an Afternoon)"
 author: Avery Wagar
 date: 2026-09-10T00:00:00-07:00
-draft: true
+draft: false
 description: "How to independently verify the 2026 Navier-Stokes and Euler Lean proofs yourself: elan, lake, a cloud box, and an afternoon. No math PhD required — that's the whole point."
 keywords: ["Lean 4", "elan", "lake", "formal verification", "Navier-Stokes", "Millennium Prize", "tutorial", "self-verify"]
 categories: ["Formal Methods", "Tutorial"]
