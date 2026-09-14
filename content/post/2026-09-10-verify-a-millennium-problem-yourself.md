@@ -171,7 +171,11 @@ us had to trust the other.
 
 That's new. Math used to be the discipline where trust was earned over
 decades of peer review. Now it's the discipline where trust is a build log.
-Run it yourself and you're part of that.
+Run it yourself and you're part of that — and as of this week, several
+independent people have, on the OpenAI repo, with results matching ours
+exactly. The Clay Institute acknowledged on September 11 that the problem
+"has apparently been settled." The verification isn't the bottleneck anymore;
+understanding the proof is.
 
 Terence Tao put the priority ordering well the same week: the competition
 that matters is being *"the first to announce a new mathematical insight,"*
